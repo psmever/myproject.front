@@ -1,6 +1,7 @@
 export { default as MainComponent } from './MainComponent';
 export { default as TestComponent } from './TestComponent';
 export { default as LoginComponent } from './auth/LoginComponent';
+export { default as LogoutComponent } from './auth/LogoutComponent';
 export { default as RegisterComponent } from './auth/RegisterComponent';
 
 export { default as AccountHomeComponent } from './account/AccountHomeComponent';

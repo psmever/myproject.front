@@ -5,7 +5,6 @@ import { Footer, SingleNav } from 'elements/common';
 export class MainComponents extends Component {
 
     render() {
-        console.debug('main');
         return (
             <div>
                 <div className="_Main_">
