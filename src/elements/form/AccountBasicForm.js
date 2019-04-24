@@ -1,7 +1,5 @@
 import React from "react";
-import { SaveButton } from 'elements/button';
-import { DefaultSelect } from 'elements/select';
-import { BirthdaySelect } from 'elements/select';
+import { SaveButton, BirthdaySelect , DefaultSelect } from 'elements';
 
 export const AccountBasicForm = ({
     userName,

@@ -1,5 +1,5 @@
 import React from "react";
-import { SaveButton } from 'elements/button';
+import { SaveButton } from 'elements';
 
 export const AccountPersonalForm = ({
     userEmail,

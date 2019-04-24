@@ -9,4 +9,4 @@ export { default as AccountBasicComponent } from './account/AccountBasicComponen
 export { default as AccountPersonalComponent } from './account/AccountPersonalComponent';
 export { default as AccountPasswordComponent } from './account/AccountPasswordComponent';
 
-export { default as ProfileHomeComponent } from './profile/ProfileHomeComponent';
+export { default as ProfileTimelineomponent } from './profile/ProfileTimelineomponent';

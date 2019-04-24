@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { putShowLoadingAction, putHideLoadingAction } from 'store/Actions';
-import { MainNav, Footer } from 'elements/common';
-import { AccountPersonalForm } from 'elements';
+import { MainNav, Footer, AccountPersonalForm } from 'elements';
 import NavTabComponent from './NavTabComponent';
 
 import * as API from 'lib/API';

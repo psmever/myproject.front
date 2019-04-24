@@ -15,10 +15,10 @@ import {
     AccountBasicComponent,
     AccountPersonalComponent,
     AccountPasswordComponent,
-    ProfileHomeComponent,
+    ProfileTimelineomponent,
 } from 'components';
 
-import { GlobalLoading } from 'elements/common';
+import { GlobalLoading } from 'elements';
 
 import { initialtryLogin, putLoginData, putGetSiteBasicData } from 'store/Actions';
 
@@ -66,7 +66,7 @@ class Root extends Component {
                 if(login_state !== true) {
                     history.push('/auth/login');
                 } else if( user_profile_set !== true) {
-                    history.push('/profile/home');
+                    history.push('/profile/timeline');
                 }
             }
         }
@@ -143,7 +143,7 @@ class Root extends Component {
                     <Route path='/account/basic' component={ AccountBasicComponent }/>
                     <Route path='/account/personal' component={ AccountPersonalComponent }/>
                     <Route path='/account/password' component={ AccountPasswordComponent }/>
-                    <Route path='/profile/home' component={ ProfileHomeComponent }/>
+                    <Route path='/profile/timeline' component={ ProfileTimelineomponent }/>
                 </Switch>
             );
         }

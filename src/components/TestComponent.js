@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import { SingleNav, Footer } from 'elements/common';
-
-
-
-
+import { SingleNav, Footer } from 'elements';
 
 export class RegisterComponent extends Component {
 

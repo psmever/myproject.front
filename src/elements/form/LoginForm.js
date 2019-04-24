@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginButton, RegisterButton } from 'elements/button';
+import { LoginButton, RegisterButton } from 'elements';
 
 
 export const LoginForm = ({ handleOnchangeItem, loginButton, registerButton }) => {

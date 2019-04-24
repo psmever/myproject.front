@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const SingleNav = () => {
+export const SingleNav = () => {
     return (
         <nav className="navbar navbar-fixed-top navbar-transparent" role="navigation">
             <div className="container">
@@ -19,4 +19,3 @@ const SingleNav = () => {
         </nav>
     );
 };
-export default SingleNav;
