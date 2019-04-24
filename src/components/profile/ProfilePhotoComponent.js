@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MainNav, Footer } from 'elements/common';
+import { MainNav, Footer, Photos } from 'elements';
 
 
 export class ProfilePhotoComponent extends Component {
@@ -18,7 +18,7 @@ export class ProfilePhotoComponent extends Component {
             <div>
                 <MainNav />
 
-
+                <Photos />
 
                 <Footer />
             </div>
