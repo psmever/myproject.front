@@ -66,8 +66,6 @@ class Root extends Component {
                     history.push('/auth/login');
                 } else if( user_profile_set !== true) {
                     history.push('/profile/home');
-                } else {
-                    history.push('/profile/home');
                 }
             }
         }
