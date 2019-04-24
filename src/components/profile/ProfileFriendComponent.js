@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MainNav, Footer } from 'elements/common';
+import { MainNav, Footer, Friends } from 'elements';
 
 
 export class ProfileFriendComponent extends Component {
@@ -18,7 +18,9 @@ export class ProfileFriendComponent extends Component {
             <div>
                 <MainNav />
 
-
+                {/* <!-- Begin page content --> */}
+                <Friends />
+                {/* <!-- End page content --> */}
 
                 <Footer />
             </div>

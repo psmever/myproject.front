@@ -24,6 +24,7 @@ export class ProfileHomeComponent extends Component {
                 {/* <!-- Begin page content --> */}
                 <Timeline />
                 {/* <!-- End page content --> */}
+
                 <Footer />
 
             </div>

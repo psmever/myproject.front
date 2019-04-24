@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MainNav, Footer } from 'elements/common';
+import { MainNav, Footer } from 'elements';
 
 
 export class Default extends Component {

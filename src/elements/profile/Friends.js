@@ -2,9 +2,9 @@ import React from "react";
 import { ProfileTop } from './ProfileTop';
 import { ProfileNav } from './ProfileNav';
 
-import { TimelinePost } from 'elements';
+import { ProfileFriendList } from 'elements';
 
-export const Timeline = () => {
+export const Friends = () => {
     return (
         <div className="container page-content">
             <div className="row">
@@ -27,7 +27,7 @@ export const Timeline = () => {
                                 <div className="row">
 
                                     {/* <!--============= timeline posts--> */}
-                                    <TimelinePost />
+                                    <ProfileFriendList />
                                     {/* <!-- end timeline posts--> */}
 
                                 </div>
