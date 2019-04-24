@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import * as API from 'lib/API';
 import { putShowLoadingAction, putHideLoadingAction } from 'store/Actions';
-import { MainNav, Footer } from 'elements/common';
+import { MainNav, Footer, AccountPasswordForm } from 'elements';
 import NavTabComponent from './NavTabComponent';
-import { AccountPasswordForm } from 'elements';
 
 import * as Helper from 'lib/Helper';
 

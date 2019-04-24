@@ -1,6 +1,5 @@
 import React from "react";
-import { RegisterButton } from 'elements/button';
-import { FormErrorMessage } from 'elements/error';
+import { RegisterButton, FormErrorMessage } from 'elements';
 
 export const RegisterForm = ({
     handleClickButton,

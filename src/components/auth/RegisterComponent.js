@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { SingleNav, Footer } from 'elements/common';
-import { RegisterForm } from 'elements';
+import { SingleNav, Footer, RegisterForm } from 'elements';
 
 import Service from 'lib/Service';
 import * as constants from 'lib/Constants';

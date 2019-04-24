@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom"
-import { SingleNav, Footer } from 'elements/common';
+import { SingleNav, Footer } from 'elements';
 import { putShowLoadingAction, putHideLoadingAction } from 'store/Actions';
 
 import * as Helper from 'lib/Helper';

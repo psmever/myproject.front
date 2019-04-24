@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { putShowLoadingAction, putHideLoadingAction } from 'store/Actions'
-import { MainNav, Footer } from 'elements/common';
+import { MainNav, Footer, AccountHome } from 'elements';
 import NavTabComponent from './NavTabComponent';
 import * as API from 'lib/API';
-import { AccountHome } from 'elements/account';
 
 import * as Helper from 'lib/Helper';
 

@@ -52,8 +52,8 @@ export class MainNav extends Component {
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav navbar-right">
-                            <li className="actives"><Link className="btn btn-default shiny" to="/profile/home">Profile</Link></li>
-                            <li><Link className="btn btn-default shiny" to="/main">홈</Link></li>
+                            <li className="actives"><Link className="btn btn-default shiny" to="/account/home">Profile</Link></li>
+                            <li><Link className="btn btn-default shiny" to="/profile/timeline">홈</Link></li>
                             <li>
                                 {
                                     this.state.login_state ? ( <Link to="/auth/logout" className="btn btn-default shiny">로그아웃</Link> ) : ( <Link to="/auth/login" className="btn btn-default shiny">로그인</Link> )
