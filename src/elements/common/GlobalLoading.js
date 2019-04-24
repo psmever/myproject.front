@@ -22,7 +22,7 @@ export class GlobalLoading extends Component {
     render() {
 
         return (
-            <div className="container ">
+            <div className="container">
                 <section className="error-container text-center">
                     <div style={divStyle.center}>
                         <Spinner size={50} spinnerColor='#0366d6' spinnerWidth={2} visible={true} />
