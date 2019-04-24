@@ -9,6 +9,7 @@ import {
     TestComponent,
     MainComponent,
     LoginComponent,
+    LogoutComponent,
     RegisterComponent,
     AccountHomeComponent,
     AccountBasicComponent,
@@ -136,6 +137,7 @@ class Root extends Component {
                     <Route exact path='/' component={ MainComponent }/>
                     <Route path='/main' component={ MainComponent }/>
                     <Route path='/auth/login' component={ LoginComponent }/>
+                    <Route path='/auth/logout' component={ LogoutComponent }/>
                     <Route path='/auth/register' component={ RegisterComponent }/>
                     <Route path='/account/home' component={ AccountHomeComponent }/>
                     <Route path='/account/basic' component={ AccountBasicComponent }/>
