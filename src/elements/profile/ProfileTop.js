@@ -2,7 +2,7 @@ import React from "react";
 
 
 const profileBackground = {
-    backgroundImage: "url(http://localhost:4040/resource/img/Cover/cover.jpg)"
+    backgroundImage: "url(http://psmever.dlinkddns.com:4040/resource/img/Cover/cover.jpg)"
 };
 
 
@@ -15,7 +15,7 @@ export const ProfileTop = () => {
                 {/* <!-- meta --> */}
                 <div className="box-layout meta bottom">
                     <div className="col-md-6 clearfix">
-                        <span className="img-wrapper pull-left m-r-15"><img src="http://localhost:4040/resource/img/Friends/guy-3.jpg" alt="" style={{width: '64px'}} className="br-radius"/> </span>
+                        <span className="img-wrapper pull-left m-r-15"><img src="http://psmever.dlinkddns.com:4040/resource/img/Friends/guy-3.jpg" alt="" style={{width: '64px'}} className="br-radius"/> </span>
                         <div className="media-body">
                             <h3 className="text-white mb-2 m-t-10 ellipsis">John Breakgrow jr.</h3>
                         </div>

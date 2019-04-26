@@ -10,7 +10,7 @@ export const ProfileFriendList = () => {
                         <div className="col-md-3">
                             <div className="contact-box center-version">
                                 <a href="#friend">
-                                    <img alt="" className="img-circle" src="http://localhost:4040/resource/img/Friends/guy-1.jpg" />
+                                    <img alt="" className="img-circle" src="http://psmever.dlinkddns.com:4040/resource/img/Friends/guy-1.jpg" />
                                     <h3 className="m-b-xs"><strong>John Doe</strong></h3>
                                     <div className="font-bold">Graphics designer</div>
                                 </a>
@@ -26,7 +26,7 @@ export const ProfileFriendList = () => {
                         <div className="col-md-3">
                             <div className="contact-box center-version">
                                 <a href="#friend">
-                                    <img alt="" className="img-circle" src="http://localhost:4040/resource/img/Friends/guy-2.jpg" />
+                                    <img alt="" className="img-circle" src="http://psmever.dlinkddns.com:4040/resource/img/Friends/guy-2.jpg" />
                                     <h3 className="m-b-xs"><strong>John Doe</strong></h3>
                                     <div className="font-bold">Graphics designer</div>
                                 </a>
@@ -42,7 +42,7 @@ export const ProfileFriendList = () => {
                         <div className="col-md-3">
                             <div className="contact-box center-version">
                                 <a href="#friend">
-                                    <img alt="" className="img-circle" src="http://localhost:4040/resource/img/Friends/guy-3.jpg" />
+                                    <img alt="" className="img-circle" src="http://psmever.dlinkddns.com:4040/resource/img/Friends/guy-3.jpg" />
                                     <h3 className="m-b-xs"><strong>John Doe</strong></h3>
                                     <div className="font-bold">Graphics designer</div>
                                 </a>
@@ -58,7 +58,7 @@ export const ProfileFriendList = () => {
                         <div className="col-md-3">
                             <div className="contact-box center-version">
                                 <a href="#friend">
-                                    <img alt="" className="img-circle" src="http://localhost:4040/resource/img/Friends/woman-1.jpg" />
+                                    <img alt="" className="img-circle" src="http://psmever.dlinkddns.com:4040/resource/img/Friends/woman-1.jpg" />
                                     <h3 className="m-b-xs"><strong>John Doe</strong></h3>
                                     <div className="font-bold">Graphics designer</div>
                                 </a>
@@ -74,7 +74,7 @@ export const ProfileFriendList = () => {
                         <div className="col-md-3">
                             <div className="contact-box center-version">
                                 <a href="#friend">
-                                    <img alt="" className="img-circle" src="http://localhost:4040/resource/img/Friends/woman-2.jpg" />
+                                    <img alt="" className="img-circle" src="http://psmever.dlinkddns.com:4040/resource/img/Friends/woman-2.jpg" />
                                     <h3 className="m-b-xs"><strong>John Doe</strong></h3>
                                     <div className="font-bold">Graphics designer</div>
                                 </a>
@@ -90,7 +90,7 @@ export const ProfileFriendList = () => {
                         <div className="col-md-3">
                             <div className="contact-box center-version">
                                 <a href="#friend">
-                                    <img alt="" className="img-circle" src="http://localhost:4040/resource/img/Friends/woman-3.jpg" />
+                                    <img alt="" className="img-circle" src="http://psmever.dlinkddns.com:4040/resource/img/Friends/woman-3.jpg" />
                                     <h3 className="m-b-xs"><strong>John Doe</strong></h3>
                                     <div className="font-bold">Graphics designer</div>
                                 </a>
@@ -106,7 +106,7 @@ export const ProfileFriendList = () => {
                         <div className="col-md-3">
                             <div className="contact-box center-version">
                                 <a href="#friend">
-                                    <img alt="" className="img-circle" src="http://localhost:4040/resource/img/Friends/guy-5.jpg" />
+                                    <img alt="" className="img-circle" src="http://psmever.dlinkddns.com:4040/resource/img/Friends/guy-5.jpg" />
                                     <h3 className="m-b-xs"><strong>John Doe</strong></h3>
                                     <div className="font-bold">Graphics designer</div>
                                 </a>
@@ -122,7 +122,7 @@ export const ProfileFriendList = () => {
                         <div className="col-md-3">
                             <div className="contact-box center-version">
                                 <a href="#friend">
-                                    <img alt="" className="img-circle" src="http://localhost:4040/resource/img/Friends/woman-1.jpg" />
+                                    <img alt="" className="img-circle" src="http://psmever.dlinkddns.com:4040/resource/img/Friends/woman-1.jpg" />
                                     <h3 className="m-b-xs"><strong>John Doe</strong></h3>
                                     <div className="font-bold">Graphics designer</div>
                                 </a>

@@ -5,14 +5,14 @@ const CancelToken = axios.CancelToken;
 
 const defaultAPIURL = (() => {
   if (process.env.NODE_ENV === 'development') {
-      return 'http://localhost:4040/service';
+      return 'http://psmever.dlinkddns.com:4040/service';
   }
 
   if (process.env.APP_ENV === 'server' && process.env.LOCAL === 'true') {
-    return 'http://localhost:4040/service';
+    return 'http://psmever.dlinkddns.com:4040/service';
   }
 
-  return 'http://localhost:4040/service';
+  return 'http://psmever.dlinkddns.com:4040/service';
 
 })();
 

@@ -5,7 +5,7 @@ class Service {
     constructor(config) {
 
         let axiosInstance = axios.create({
-            baseURL: 'http://localhost:4040/service',
+            baseURL: 'http://psmever.dlinkddns.com:4040/service',
             timeout: 20000,
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
