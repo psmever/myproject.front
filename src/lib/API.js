@@ -43,3 +43,13 @@ export function postUserPasswordChange(payload) {
 export function postUserProfilePhotoChange(payload) {
     return authAxios.post('/api/v1/upload/image/profile', payload);
 }
+
+
+export function postUserProfileTimeLineTodaySave(payload) {
+    return authAxios.post('/api/v1/post/timeline/today', payload);
+}
+
+
+export function postUserProfileTimeLineTodayPhotoSave(payload) {
+    return payload;
+}

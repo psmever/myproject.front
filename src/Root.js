@@ -67,8 +67,10 @@ class Root extends Component {
 
                 if(login_state !== true) {
                     history.push('/auth/login');
-                } else if( user_profile_set !== true) {
+                } else if( user_profile_set === true) {
                     history.push('/profile/timeline');
+                } else if( Helper.isEmpty(user_profile_set) === false) {
+                    history.push('/account/home');
                 }
             }
         }
@@ -111,10 +113,10 @@ class Root extends Component {
 
         const loginInfo = Helper.storageManager.get('logininfo') || null;
         if(Helper.isEmpty(loginInfo) === false ) {
-            console.debug({
-                user_uid: loginInfo.user_uid,
-                access_token: loginInfo.access_token
-            });
+            // console.debug({
+            //     user_uid: loginInfo.user_uid,
+            //     access_token: loginInfo.access_token
+            // });
         }
     }
 

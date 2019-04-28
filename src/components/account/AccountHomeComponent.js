@@ -36,8 +36,8 @@ export class AccountHomeComponent extends Component {
     }
 
     _getUserProfileHomeData = async () => {
+
         if(Helper.isEmpty(this.state.user_uid) === false && Helper.isEmpty(this.props.user_uid) === false && this.state.getUserProfileDataResult === false) {
-            putShowLoadingAction();
             const getResult = await API.getUserProfileHomeData(this.state.user_uid);
             const {
                 last_login_date,
@@ -55,44 +55,59 @@ export class AccountHomeComponent extends Component {
                 user_web_site,
                 profile_image
             } = getResult.data;
-            this.setState({
-                getUserBasicDataResult: true,
-                userHomeData: {
-                    last_login_date: last_login_date || '',
-                    last_login_date_string: last_login_date_string || '',
-                    regist_date: regist_date || '',
-                    user_address: user_address || '',
-                    user_birthday: user_birthday || '',
-                    user_email: user_email || '',
-                    user_gender: user_gender || '',
-                    user_gender_code_name: user_gender_code_name || '없음',
-                    user_intro: user_intro || '',
-                    user_name: user_name || '',
-                    user_phone_number: user_phone_number || '',
-                    user_uid: user_uid || '',
-                    user_web_site: user_web_site || '',
-                    user_profile_image: profile_image || '',
-                }
-            });
-            putHideLoadingAction();
+
+            if( this.state.getUserProfileDataResult === false ) {
+                this.setState({
+                    getUserBasicDataResult: true,
+                    userHomeData: {
+                        last_login_date: last_login_date || '',
+                        last_login_date_string: last_login_date_string || '',
+                        regist_date: regist_date || '',
+                        user_address: user_address || '',
+                        user_birthday: user_birthday || '',
+                        user_email: user_email || '',
+                        user_gender: user_gender || '',
+                        user_gender_code_name: user_gender_code_name || '없음',
+                        user_intro: user_intro || '',
+                        user_name: user_name || '',
+                        user_phone_number: user_phone_number || '',
+                        user_uid: user_uid || '',
+                        user_web_site: user_web_site || '',
+                        user_profile_image: profile_image || '',
+                    }
+               });
+            }
         }
     }
 
     componentWillMount() {
         // console.debug({Appcomponent:'componentWillMount'});
         this.pageStart();
+
     }
 
+    componentWillUnmount() {
+        console.debug('componentWillUnmount');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.debug({nextProps:nextProps, nextState:nextState});
+        return true / false;
+    }
 
     componentDidMount() {
         // console.debug({Appcomponent:'componentDidMount'});
         this._getUserProfileHomeData();
+
     }
+
+
 
     _handleProfileImageOnchange = (e) => {
         const changeFile = e.target.files[0];
         if(Helper.isEmpty(changeFile.name) === false && Helper.isEmpty(changeFile.size) === false && Helper.isEmpty(changeFile.type) === false) {
             this.setState({
+                getUserProfileDataResult:false,
                 profileSelectFile: changeFile
             });
         } else {
@@ -103,19 +118,20 @@ export class AccountHomeComponent extends Component {
     }
 
     _handleProfileImageChangeButton = async (e) => {
-        console.debug({file: this.state.profileSelectFile});
+        // e.preventDefault();
+        const { putShowLoadingAction, putHideLoadingAction } = this.props;
         let imageFormData = new FormData();
         imageFormData.append('profile_image', this.state.profileSelectFile)
         imageFormData.append('user_uid', this.state.user_uid)
-        // e.preventDefault();
+
         putShowLoadingAction();
         const saveBasicDataResult = await API.postUserProfilePhotoChange(imageFormData);
         putHideLoadingAction();
 
-        console.debug(saveBasicDataResult);
-
         if(saveBasicDataResult.status === true) {
+            putShowLoadingAction();
             this._getUserProfileHomeData();
+            putHideLoadingAction();
         }
     }
 

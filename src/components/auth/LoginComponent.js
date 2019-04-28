@@ -51,7 +51,7 @@ export class LoginComponent extends Component {
                 user_profile_set: loginResult.payload.data.user_profile_state,
             });
             Helper.globalAlert({text: loginResult.payload.message});
-            history.push('/');
+            history.push('/profile/timeline');
         } else {
             Helper.globalErroraAlert({text: loginResult.payload.message});
         }

@@ -56,7 +56,7 @@ export class MainNav extends Component {
                             <li><Link className="btn btn-default shiny" to="/profile/timeline">홈</Link></li>
                             <li>
                                 {
-                                    this.state.login_state ? ( <Link to="/auth/logout" className="btn btn-default shiny">로그아웃</Link> ) : ( <Link to="/auth/login" className="btn btn-default shiny">로그인</Link> )
+                                    this.state.login_state ? ( <Link to="/auth/logout" className="btn btn-default shiny">로그아웃</Link> ) : ( <Link to="/auth/logout" className="btn btn-default shiny">로그아웃</Link> )
                                 }
                             </li>
                         </ul>
