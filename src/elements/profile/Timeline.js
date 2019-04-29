@@ -6,6 +6,7 @@ import { ProfileNav } from './ProfileNav';
 import { TimelineTodayPostWrite, TimelistPostList } from 'elements';
 
 export const Timeline = ({
+    handleSelectImageInfo,
     handleOnChangeTimeLineContents,
     handleClickTimeLinePostButton,
     handleOnChangeTodayImage
@@ -41,6 +42,7 @@ export const Timeline = ({
 
                                                         {/* <!-- post state form --> */}
                                                         <TimelineTodayPostWrite
+                                                            handleSelectImageInfo={handleSelectImageInfo}
                                                             handleOnChangeContents={handleOnChangeTimeLineContents}
                                                             handleClickPostButton={handleClickTimeLinePostButton}
                                                             handleOnChangeTodayImageButton={handleOnChangeTodayImage}

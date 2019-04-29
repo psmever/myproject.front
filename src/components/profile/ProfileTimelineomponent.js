@@ -17,6 +17,10 @@ export class ProfileHomeComponent extends Component {
         this.state = {
             user_uid: false,
             today_contents: '',
+            today_select_image_info: {
+                image_url: '',
+                image_upload_idx: '',
+            }
         }
     }
 
@@ -41,6 +45,10 @@ export class ProfileHomeComponent extends Component {
         console.debug(this.state);
     }
 
+    componentDidUpdate() {
+        console.debug(this.state);
+    }
+
     _handleOnChangeTimeLineContents = (e) => {
         this.setState({
             today_contents: e.target.value
@@ -52,7 +60,8 @@ export class ProfileHomeComponent extends Component {
         const { putShowLoadingAction, putHideLoadingAction } = this.props;
         const todayContentsData = {
             user_uid: this.state.user_uid,
-            today_contents: this.state.today_contents
+            today_contents: this.state.today_contents,
+            image_upload_idx: this.state.today_select_image_info.image_upload_idx
         }
         putShowLoadingAction();
         const saveTodayDataResult = await API.postUserProfileTimeLineTodaySave(todayContentsData);
@@ -76,10 +85,16 @@ export class ProfileHomeComponent extends Component {
             const saveDataResult = await API.postUserProfileTimeLineTodayPhotoSave(imageFormData);
             putHideLoadingAction();
 
-            console.debug({
-                info: saveDataResult
-            });
+            if(saveDataResult['status'] === false) {
+                Helper.globalAlert({text: saveDataResult.message})
+            } else {
+                this.setState({
+                    today_select_image_info: saveDataResult.data
+                });
+            }
         }
+
+
     }
 
     render() {
@@ -90,12 +105,15 @@ export class ProfileHomeComponent extends Component {
             _handleOnChangeTodayImage
         } = this;
 
+        const selectImageInfo = this.state.today_select_image_info;
+
         return (
             <div>
                 <MainNav />
 
                 {/* <!-- Begin page content --> */}
                 <Timeline
+                    handleSelectImageInfo = {selectImageInfo}
                     handleOnChangeTimeLineContents={_handleOnChangeTimeLineContents}
                     handleClickTimeLinePostButton={_handleClickTimeLinePostButton}
                     handleOnChangeTodayImage={_handleOnChangeTodayImage}

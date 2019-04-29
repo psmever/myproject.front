@@ -51,5 +51,5 @@ export function postUserProfileTimeLineTodaySave(payload) {
 
 
 export function postUserProfileTimeLineTodayPhotoSave(payload) {
-    return payload;
+    return authAxios.post('/api/v1/upload/image/todayimage', payload);
 }

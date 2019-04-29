@@ -1,7 +1,8 @@
 import React from "react";
-
+import * as Helper from 'lib/Helper';
 
 export const TimelineTodayPostWrite = ({
+    handleSelectImageInfo,
     handleOnChangeContents,
     handleClickPostButton,
     handleOnChangeTodayImageButton
@@ -17,6 +18,24 @@ export const TimelineTodayPostWrite = ({
                 <button type="button" className="btn btn-azure pull-right"
                     onClick={handleClickPostButton}
                 >Post </button>
+                {
+                    Helper.isEmpty(handleSelectImageInfo.image_url) === false ?
+                    (
+                        <ul className="nav nav-pills">
+                            <li>
+                                <div className="box-body" style={{display: 'block'}}>
+                                    <img className="img-responsive timeline-post-img-center" src={handleSelectImageInfo.image_url} alt=""/>
+                                </div>
+                            </li>
+                        </ul>
+                    )
+                    :
+                    (
+                        <ul className="nav nav-pills">
+                        </ul>
+                    )
+                }
+
                 <ul className="nav nav-pills">
                     <li>
                         <span className="file-input btn btn-azure btn-file">
