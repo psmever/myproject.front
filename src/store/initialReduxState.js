@@ -28,4 +28,10 @@ export default {
         },
         user_basic_data_save_state: false
     },
+    profile: {
+        timeline_list: {
+            state: false,
+            data: []
+        }
+    },
 };

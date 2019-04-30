@@ -49,13 +49,14 @@ class Root extends Component {
             if( loginInfo === null ) {
                 history.push('/auth/login');
             } else {
-                const { login_state, access_token, user_profile_set, user_uid } = loginInfo;
+                const { login_state, access_token, user_profile_set, user_uid, user_image_url } = loginInfo;
 
                 await putLoginData({
                         login_state: login_state,
                         user_uid: user_uid,
                         access_token: access_token,
                         user_profile_set: user_profile_set,
+                        user_image_url: user_image_url
                 });
 
                 if( login_state === true ) {

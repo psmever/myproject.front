@@ -9,7 +9,8 @@ export const Timeline = ({
     handleSelectImageInfo,
     handleOnChangeTimeLineContents,
     handleClickTimeLinePostButton,
-    handleOnChangeTodayImage
+    handleOnChangeTodayImage,
+    userTimelineList
 }) => {
     return (
         <div className="container page-content">
@@ -50,7 +51,8 @@ export const Timeline = ({
                                                         {/* <!-- end post state form --> */}
 
                                                         {/* <!--  Begin posts --> */}
-                                                        <TimelistPostList />
+                                                        <TimelistPostList
+                                                        TimelineList={userTimelineList}/>
                                                         {/* <!--  end posts --> */}
 
                                                     </div>

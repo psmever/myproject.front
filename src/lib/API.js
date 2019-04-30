@@ -53,3 +53,12 @@ export function postUserProfileTimeLineTodaySave(payload) {
 export function postUserProfileTimeLineTodayPhotoSave(payload) {
     return authAxios.post('/api/v1/upload/image/todayimage', payload);
 }
+
+
+export function getUserProfileTimeLineList(user_uid) {
+    return authAxios.get('/api/v1/post/timeline/today', {
+        params: {
+            'user_uid': user_uid
+        }
+    });
+}

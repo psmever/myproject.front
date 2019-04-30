@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { MainNav, Footer, Timeline } from 'elements';
 
-import { putShowLoadingAction, putHideLoadingAction } from 'store/Actions'
+import {
+    putShowLoadingAction,
+    putHideLoadingAction,
+    putGetProfileTimeList,
+
+} from 'store/Actions'
 
 import * as Helper from 'lib/Helper';
 import * as API from 'lib/API';
@@ -16,6 +21,8 @@ export class ProfileHomeComponent extends Component {
 
         this.state = {
             user_uid: false,
+
+            get_timeline_list: false,
             today_contents: '',
             today_select_image_info: {
                 image_url: '',
@@ -37,16 +44,29 @@ export class ProfileHomeComponent extends Component {
         }
     }
 
+    _getTimeListList = () => {
+
+        if(this.props.timeline_list.state === false && Helper.isEmpty(this.props.user_uid) === false && this.state.get_timeline_list === false) {
+            this.props.putGetProfileTimeList(this.state.user_uid);
+
+            this.setState({
+                get_timeline_list: true
+            });
+        }
+    }
+
     componentWillMount() {
         this.pageStart();
     }
 
     componentDidMount() {
-        console.debug(this.state);
+        // console.debug(this.state);
+
+        this._getTimeListList();
     }
 
     componentDidUpdate() {
-        console.debug(this.state);
+        // console.debug(this.state);
     }
 
     _handleOnChangeTimeLineContents = (e) => {
@@ -70,6 +90,10 @@ export class ProfileHomeComponent extends Component {
         if(saveTodayDataResult.status === false) {
             Helper.globalAlert({text: saveTodayDataResult.message})
         }
+
+        this.setState({
+            get_timeline_list: false
+        });
 
     }
 
@@ -107,6 +131,8 @@ export class ProfileHomeComponent extends Component {
 
         const selectImageInfo = this.state.today_select_image_info;
 
+        const userTimelineList = this.props.timeline_list.data;
+
         return (
             <div>
                 <MainNav />
@@ -117,6 +143,7 @@ export class ProfileHomeComponent extends Component {
                     handleOnChangeTimeLineContents={_handleOnChangeTimeLineContents}
                     handleClickTimeLinePostButton={_handleClickTimeLinePostButton}
                     handleOnChangeTodayImage={_handleOnChangeTodayImage}
+                    userTimelineList={userTimelineList}
                 />
                 {/* <!-- End page content --> */}
 
@@ -130,11 +157,13 @@ export class ProfileHomeComponent extends Component {
 
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
+    timeline_list: state.profile.timeline_list,
 });
 
 const mapDispatchToProps = {
     putShowLoadingAction,
-    putHideLoadingAction
+    putHideLoadingAction,
+    putGetProfileTimeList
 };
 
 export default withRouter(connect(
