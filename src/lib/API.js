@@ -62,3 +62,23 @@ export function getUserProfileTimeLineList(user_uid) {
         }
     });
 }
+
+
+/**
+ *
+ * @param {*} payload
+ *
+ * 코멘트 저장
+ */
+export function postUserProfileTimeLineTodayCommentSave(payload) {
+    return authAxios.post('/api/v1/post/timeline/comment', payload);
+}
+
+/**
+ *
+ * @param {*} payload
+ * 타임 라인 라이크 버튼
+ */
+export function postUserProfileTimeLineLikeButtonClick(payload) {
+    return authAxios.post('/api/v1/post/timeline/like', payload);
+}

@@ -81,10 +81,10 @@ const ProfileReducer = (state = initialReduxState.profile, action) => {
 
 
 const RootReducer = combineReducers({
+    profile: ProfileReducer,
     base: BaseReducer,
     auth: AuthReducer,
     account: AccountReducer,
-    profile: ProfileReducer,
 })
 
 export default RootReducer;
