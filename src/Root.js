@@ -15,7 +15,7 @@ import {
     AccountBasicComponent,
     AccountPersonalComponent,
     AccountPasswordComponent,
-    ProfileTimelineomponent,
+    ProfileTimelineComponent,
     ProfileFriendComponent,
     ProfilePhotoComponent,
 } from 'components';
@@ -148,7 +148,7 @@ class Root extends Component {
                     <Route path='/account/basic' component={ AccountBasicComponent }/>
                     <Route path='/account/personal' component={ AccountPersonalComponent }/>
                     <Route path='/account/password' component={ AccountPasswordComponent }/>
-                    <Route path='/profile/timeline' component={ ProfileTimelineomponent }/>
+                    <Route path='/profile/timeline' component={ ProfileTimelineComponent }/>
                     <Route path='/profile/friends' component={ ProfileFriendComponent }/>
                     <Route path='/profile/photos' component={ ProfilePhotoComponent }/>
                 </Switch>
