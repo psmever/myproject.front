@@ -9,7 +9,11 @@ export const Timeline = ({
     handleSelectImageInfo,
     handleOnChangeTimeLineContents,
     handleClickTimeLinePostButton,
-    handleOnChangeTodayImage
+    handleOnChangeTodayImage,
+    userTimelineList,
+    ONCHANGE_COMMENT,
+    COMMENT_PUSH,
+    LIKEBUTTON_CLICK
 }) => {
     return (
         <div className="container page-content">
@@ -17,7 +21,9 @@ export const Timeline = ({
                 <div className="col-md-10 col-md-offset-1">
                     <div className="row">
 
-                        <ProfileTop />
+                        <ProfileTop
+
+                        />
 
                     </div>
                     <div className="row">
@@ -50,7 +56,11 @@ export const Timeline = ({
                                                         {/* <!-- end post state form --> */}
 
                                                         {/* <!--  Begin posts --> */}
-                                                        <TimelistPostList />
+                                                        <TimelistPostList
+                                                            TimelineList={userTimelineList}
+                                                            COMMENT_PUSH={COMMENT_PUSH}
+                                                            LIKEBUTTON_CLICK={LIKEBUTTON_CLICK}
+                                                        />
                                                         {/* <!--  end posts --> */}
 
                                                     </div>

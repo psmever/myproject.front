@@ -53,3 +53,32 @@ export function postUserProfileTimeLineTodaySave(payload) {
 export function postUserProfileTimeLineTodayPhotoSave(payload) {
     return authAxios.post('/api/v1/upload/image/todayimage', payload);
 }
+
+
+export function getUserProfileTimeLineList(user_uid) {
+    return authAxios.get('/api/v1/post/timeline/today', {
+        params: {
+            'user_uid': user_uid
+        }
+    });
+}
+
+
+/**
+ *
+ * @param {*} payload
+ *
+ * 코멘트 저장
+ */
+export function postUserProfileTimeLineTodayCommentSave(payload) {
+    return authAxios.post('/api/v1/post/timeline/comment', payload);
+}
+
+/**
+ *
+ * @param {*} payload
+ * 타임 라인 라이크 버튼
+ */
+export function postUserProfileTimeLineLikeButtonClick(payload) {
+    return authAxios.post('/api/v1/post/timeline/like', payload);
+}

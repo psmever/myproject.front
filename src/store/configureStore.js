@@ -6,6 +6,7 @@ import RootSaga from './RootSaga';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
+// let dev = true;
 let dev = false;
 
 export default function configureStore() {

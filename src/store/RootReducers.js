@@ -65,8 +65,23 @@ const AccountReducer = (state = initialReduxState.account, action) => {
     }
 };
 
+const ProfileReducer = (state = initialReduxState.profile, action) => {
+    switch (action.type) {
+        case ActionTypes.REQUEST_GET_TIMELINE_LIST:
+            return { ...state};
+        case ActionTypes.SUCCEEDED_GET_TIMELINE_LIST:
+            return { ...state, timeline_list: action.payload };
+        case ActionTypes.FAILED_GET_TIMELINE_LIST:
+            return { ...state, timeline_list: action.payload};
+
+        default:
+            return state;
+    }
+};
+
 
 const RootReducer = combineReducers({
+    profile: ProfileReducer,
     base: BaseReducer,
     auth: AuthReducer,
     account: AccountReducer,
