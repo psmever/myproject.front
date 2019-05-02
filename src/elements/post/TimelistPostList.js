@@ -56,7 +56,7 @@ export class TimelistPostList extends Component {
                                     }
                                     <button type="button" className="btn btn-default btn-xs"><i className="fa fa-share"></i> Share </button>
                                     <button type="button" className="btn btn-default btn-xs" post_uuid={item.post_uuid} onClick={this.handleOnClickLikeButton}><i className="fa fa-thumbs-o-up"></i> Like </button>
-                                    <span className="pull-right text-muted">{item.post_like_count} likes - {item.share_count} comments</span>
+                                    <span className="pull-right text-muted">{item.post_like_count} likes - {item.post_comment_count} comments</span>
                                 </div>
 
                                 <div className="box-footer box-comments" style={{display: 'block'}}>

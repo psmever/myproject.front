@@ -21,7 +21,9 @@ export const Timeline = ({
                 <div className="col-md-10 col-md-offset-1">
                     <div className="row">
 
-                        <ProfileTop />
+                        <ProfileTop
+
+                        />
 
                     </div>
                     <div className="row">
