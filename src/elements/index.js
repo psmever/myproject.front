@@ -20,12 +20,8 @@ export { AccountPersonalForm } from './form/AccountPersonalForm';
 export { LoginForm } from './form/LoginForm';
 export { RegisterForm } from './form/RegisterForm';
 
-export { TimelineTodayPostWrite } from './post/TimelineTodayPostWrite';
-export { TimelistPostList } from './post/TimelistPostList';
-
 export { ProfileNav } from './profile/ProfileNav';
 export { ProfileTop } from './profile/ProfileTop';
-export { Timeline } from './profile/Timeline';
 export { Friends } from './profile/Friends';
 export { Photos } from './profile/Photos';
 

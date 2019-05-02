@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as Helper from 'lib/Helper';
+import * as API from 'lib/API';
 
 export class TimelistPostList extends Component {
 
@@ -10,19 +11,36 @@ export class TimelistPostList extends Component {
         }
     }
 
-    handleCommentKeyPress = (e) => {
+
+    handleCommentKeyPress = async (e) => {
         if (e.nativeEvent.key === "Enter") {
-            this.props.COMMENT_PUSH({
-                post_uuid: e.target.getAttribute('post_uuid'),
-                comment_contents: e.target.value
-            });
+            if(Helper.isEmpty(e.target.value) === false && Helper.isEmpty(e.target.getAttribute('post_uuid')) === false) {
+                const saveCommentDataResult = await API.postUserProfileTimeLineTodayCommentSave({
+                    post_uuid: e.target.getAttribute('post_uuid'),
+                    comment_contents: e.target.value
+                });
+
+                if(saveCommentDataResult.status === false) {
+                    Helper.globalAlert({text: saveCommentDataResult.message})
+                } else {
+                    this.props.GET_TIME_LINE_LIST();
+                }
+            }
         }
     }
 
-    handleOnClickLikeButton = (e) => {
-        this.props.LIKEBUTTON_CLICK({
+    handleOnClickLikeButton = async (e) => {
+        const saveCommentLikeResult = await API.postUserProfileTimeLineLikeButtonClick({
+            like_command: 'add',
             post_uuid: e.target.getAttribute('post_uuid')
         });
+
+        if(saveCommentLikeResult.status === false) {
+            Helper.globalAlert({text: saveCommentLikeResult.message})
+        } else {
+            this.props.GET_TIME_LINE_LIST();
+        }
+
     }
 
     render() {
@@ -33,7 +51,7 @@ export class TimelistPostList extends Component {
         return (
             <div>
                 {
-                    this.props.TimelineList.map((item) => {
+                    this.props.TIME_LINE_LIST.map((item) => {
                         return (
                             <div className="box box-widget" key={item.idx}>
                                 <div className="box-header with-border">
@@ -102,5 +120,10 @@ export class TimelistPostList extends Component {
         );
     }
 };
+
+TimelistPostList.defaultProps = {
+    TIME_LINE_LIST: []
+};
+
 
 export default TimelistPostList;

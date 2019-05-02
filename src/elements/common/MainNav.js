@@ -22,6 +22,7 @@ export class MainNav extends Component {
             this.setState({
                 login_state: true
             });
+
         }
 
     }
@@ -33,6 +34,8 @@ export class MainNav extends Component {
 
     componentWillMount() {
         this.NavStart();
+
+
     }
 
     render() {
