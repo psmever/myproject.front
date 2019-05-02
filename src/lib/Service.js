@@ -31,7 +31,6 @@ class Service {
 	}
 
     handleSuccess = (e) => {
-        console.debug(e);
         if(this.initType === 'alert') {
             Helper.globalSuccessAlert1({
                 text: e.data.message

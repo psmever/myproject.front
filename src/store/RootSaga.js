@@ -107,6 +107,46 @@ function* fetchGetSiteBasicData() {
     yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
 }
 
+function* fetchGetProfileTimeline(action) {
+    yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    try {
+        const getResult = yield API.getUserProfileTimeLineList(action.user_uid);
+        if(getResult.status === true ) {
+            yield put({
+                type: ActionTypes.SUCCEEDED_GET_TIMELINE_LIST,
+                payload: {
+                    state: true,
+                    data: getResult.data
+                }
+            });
+        } else {
+            yield put({
+                type: ActionTypes.FAILED_GET_TIMELINE_LIST,
+                payload: {
+                    state: false,
+                    data: [],
+                    message: getResult.message
+                }
+            });
+        }
+
+    } catch (error) {
+        yield put({
+            type: ActionTypes.FAILED_GET_TIMELINE_LIST,
+            payload: {
+                state: false,
+                data: [],
+                message: error.data.message
+            }
+        });
+    }
+    yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+}
+
+
+
+
+
 function* actionWatcher() {
 
     yield takeLatest(ActionTypes.INIT_LOGIN_DATA, fetchLoginData);
@@ -118,6 +158,8 @@ function* actionWatcher() {
 
     yield takeLatest(ActionTypes.REQUEST_GET_USER_BASIC_DATA, fetchTryUserBasicData);
     yield takeLatest(ActionTypes.REQUEST_USER_ACCOUNT_BASIC_DATA, fetchTryUserAccountBasicDataSave);
+
+    yield takeLatest(ActionTypes.REQUEST_GET_TIMELINE_LIST, fetchGetProfileTimeline);
 
 }
 

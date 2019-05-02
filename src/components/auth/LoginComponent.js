@@ -49,9 +49,10 @@ export class LoginComponent extends Component {
                 user_uid: loginResult.payload.data.user_uid,
                 access_token: loginResult.payload.data.access_token,
                 user_profile_set: loginResult.payload.data.user_profile_state,
+                user_image_url: loginResult.payload.data.user_image_url,
             });
             Helper.globalAlert({text: loginResult.payload.message});
-            history.push('/');
+            history.push('/profile/timeline');
         } else {
             Helper.globalErroraAlert({text: loginResult.payload.message});
         }

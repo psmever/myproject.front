@@ -1,3 +1,11 @@
+const default_base_url = 'http://psmever.dlinkddns.com:4040';
+
+export const globalConst = {
+    default_user_image : default_base_url+'/resource/img/default_profile.png'
+}
+
+
+
 export const ServiceURL = {
     user_register_email_check: '/api/v1/auth/authorize/register_user_emailcheck',
     user_register_name_check: '/api/v1/auth/authorize/register_user_namecheck',
@@ -15,3 +23,4 @@ export const ServiceURL = {
     user_total_list: '/api/v1/user/total_list',
     totalcodelist: '/api/v1/system/code/list',
 };
+

@@ -45,9 +45,12 @@ export const putHideLoadingAction = () => ({
     type: ActionTypes.HIDE_LOADING_ACTION,
 });
 
-
-
-
 export const putGetSiteBasicData = () => ({
     type: ActionTypes.REQUEST_GET_SITE_BASIC_DATA
+});
+
+
+export const putGetProfileTimeList = (user_uid) => ({
+    type: ActionTypes.REQUEST_GET_TIMELINE_LIST,
+    user_uid: user_uid
 });
