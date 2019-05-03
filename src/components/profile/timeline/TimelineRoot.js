@@ -3,6 +3,7 @@ import { ProfileTop, ProfileNav } from 'elements';
 
 import { TimelineTodayPostWrite } from './TimelineTodayPostWrite';
 import { TimelistPostList } from './TimelistPostList';
+import * as Helper from 'lib/Helper';
 
 
 export class TimelineRoot extends Component {
@@ -27,14 +28,20 @@ export class TimelineRoot extends Component {
     }
 
     render() {
-        console.debug({name: 'TimelineRoot render() ', props: this.props});
+
+        Helper.DEBUG({props: this.props});
+
+        const { TOP_INFO } = this.props
+
         return (
             <div className="container page-content">
                 <div className="row">
                     <div className="col-md-10 col-md-offset-1">
                         <div className="row">
 
-                            <ProfileTop />
+                            <ProfileTop
+                                top_info = {TOP_INFO}
+                            />
 
                         </div>
                         <div className="row">

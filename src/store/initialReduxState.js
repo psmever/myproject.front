@@ -29,9 +29,13 @@ export default {
         user_basic_data_save_state: false
     },
     profile: {
+        profile_top_info: {
+            state: false,
+            data: []
+        },
         timeline_list: {
             state: false,
             data: []
-        }
+        },
     },
 };

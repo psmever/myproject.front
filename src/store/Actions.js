@@ -54,3 +54,9 @@ export const putGetProfileTimeList = (user_uid) => ({
     type: ActionTypes.REQUEST_GET_TIMELINE_LIST,
     user_uid: user_uid
 });
+
+
+export const putGetProfileTopInfo = (user_uid) => ({
+    type: ActionTypes.REQUEST_GET_PROFILE_TOP_INFO,
+    user_uid: user_uid
+});

@@ -1,12 +1,18 @@
 import React from "react";
-
+import * as Helper from 'lib/Helper';
 
 const profileBackground = {
     backgroundImage: "url(http://psmever.dlinkddns.com:4040/resource/img/Cover/cover.jpg)"
 };
 
 
-export const ProfileTop = () => {
+export const ProfileTop = (
+    top_info
+) => {
+
+    const TOP_INFO = top_info;
+    // Helper.DEBUG({top_info:top_info});
+
     return (
         <div className="col-md-12">
             <div className="bg-picture" style={profileBackground}>
@@ -15,9 +21,9 @@ export const ProfileTop = () => {
                 {/* <!-- meta --> */}
                 <div className="box-layout meta bottom">
                     <div className="col-md-6 clearfix">
-                        <span className="img-wrapper pull-left m-r-15"><img src="http://psmever.dlinkddns.com:4040/resource/img/Friends/guy-3.jpg" alt="" style={{width: '64px'}} className="br-radius"/> </span>
+                        <span className="img-wrapper pull-left m-r-15"><img src={TOP_INFO.user_image_url} alt="" style={{width: '64px'}} className="br-radius"/> </span>
                         <div className="media-body">
-                            <h3 className="text-white mb-2 m-t-10 ellipsis">John Breakgrow jr.</h3>
+                            <h3 className="text-white mb-2 m-t-10 ellipsis">{TOP_INFO.user_name}.</h3>
                         </div>
                     </div>
                     <div className="col-md-6">

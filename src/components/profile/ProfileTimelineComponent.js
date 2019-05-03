@@ -9,6 +9,7 @@ import {
     putShowLoadingAction,
     putHideLoadingAction,
     putGetProfileTimeList,
+    putGetProfileTopInfo,
 } from 'store/Actions'
 
 export class ProfileTimelineComponent extends Component {
@@ -18,33 +19,36 @@ export class ProfileTimelineComponent extends Component {
         super(props);
 
         this.state = {
-            getTimeLineState: false
+            getTimeLineState: false,
+            getProfileTopInfoState: false
 
         }
     }
 
     componentWillMount() {
-        console.log({ name:'Component WILL MOUNT!', state: this.state})
+        // console.log({ name:'Component WILL MOUNT!', state: this.state})
         // this._getTimeLineList();
     }
 
     componentDidMount() {
-        console.log({ name:'Component DID MOUNT!', state: this.state, props: this.props})
+        // console.log({ name:'Component DID MOUNT!', state: this.state, props: this.props})
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log({ name:'Component WILL RECIEVE PROPS!', nextProps: nextProps})
+        // console.log({ name:'Component WILL RECIEVE PROPS!', nextProps: nextProps})
 
 
-        if(Helper.isEmpty(nextProps.user_uid) === false && this.state.getTimeLineState === false)
-        {
-            this._getTimeLineList();
+        // if(Helper.isEmpty(nextProps.user_uid) === false) {
+        //     this._getTimeLineList();
+        // }
+
+        if(Helper.isEmpty(nextProps.user_uid) === false) {
+            this._getProfileTopInfo();
         }
-
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log({ name:'shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
+        // console.log({ name:'shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
 
         const updateState = true;
 
@@ -52,16 +56,16 @@ export class ProfileTimelineComponent extends Component {
     }
 
     componentWillUnmount() {
-        console.log({ name:'Component WILL UNMOUNT!' , state: this.state, props: this.props})
+        // console.log({ name:'Component WILL UNMOUNT!' , state: this.state, props: this.props})
     }
 
 
     componentWillUpdate(nextProps, nextState) {
-        console.log({ name:'Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+        // console.log({ name:'Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log({ name:'Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+        // console.log({ name:'Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
     }
 
     _getTimeLineList = async () => {
@@ -73,16 +77,31 @@ export class ProfileTimelineComponent extends Component {
                     getTimeLineState: true
                 })
             }
+
+            // this.props.putGetProfileTopInfo(this.props.user_uid);
+        }
+    }
+
+    _getProfileTopInfo = async () => {
+        if(Helper.isEmpty(this.props.user_uid) === false) {
+            this.props.putGetProfileTopInfo(this.props.user_uid);
+            this.setState({
+                getProfileTopInfoState: true
+            })
         }
     }
 
     render() {
+        Helper.DEBUG({props: this.props});
+
+        const { topData } = this.props;
         return (
             <div>
                 <MainNav />
 
                     {/* <!-- Begin page content --> */}
                     <TimelineRoot
+                        TOP_INFO = {topData}
                         USER_UID = {this.props.user_uid}
                         TIME_LINE_LIST = {this.props.timeline_list}
                         GET_TIME_LINE_LIST = {this._getTimeLineList}
@@ -99,13 +118,15 @@ export class ProfileTimelineComponent extends Component {
 
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
+    topData: state.profile.profile_top_info.data,
     timeline_list: state.profile.timeline_list.data,
 });
 
 const mapDispatchToProps = {
     putShowLoadingAction,
     putHideLoadingAction,
-    putGetProfileTimeList
+    putGetProfileTimeList,
+    putGetProfileTopInfo
 };
 
 export default withRouter(connect(

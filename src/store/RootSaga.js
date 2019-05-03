@@ -144,6 +144,41 @@ function* fetchGetProfileTimeline(action) {
 }
 
 
+function* fetchGetProfileTopInfo(action) {
+    yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    try {
+        const getResult = yield API.postUserProfileTopInfo(action.user_uid);
+        if(getResult.status === true ) {
+            yield put({
+                type: ActionTypes.SUCCEEDED_GET_PROFILE_TOP_INFO,
+                payload: {
+                    state: true,
+                    data: getResult.data
+                }
+            });
+        } else {
+            yield put({
+                type: ActionTypes.FAILED_GET_PROFILE_TOP_INFO,
+                payload: {
+                    state: false,
+                    data: [],
+                    message: getResult.message
+                }
+            });
+        }
+
+    } catch (error) {
+        yield put({
+            type: ActionTypes.FAILED_GET_PROFILE_TOP_INFO,
+            payload: {
+                state: false,
+                data: [],
+                message: error.data.message
+            }
+        });
+    }
+    yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+}
 
 
 
@@ -160,6 +195,8 @@ function* actionWatcher() {
     yield takeLatest(ActionTypes.REQUEST_USER_ACCOUNT_BASIC_DATA, fetchTryUserAccountBasicDataSave);
 
     yield takeLatest(ActionTypes.REQUEST_GET_TIMELINE_LIST, fetchGetProfileTimeline);
+
+    yield takeLatest(ActionTypes.REQUEST_GET_PROFILE_TOP_INFO, fetchGetProfileTopInfo);
 
 }
 
