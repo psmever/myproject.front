@@ -26,29 +26,28 @@ export class ProfileTimelineComponent extends Component {
     }
 
     componentWillMount() {
-        // console.log({ name:'Component WILL MOUNT!', state: this.state})
+        console.log({ name:'Component WILL MOUNT!', state: this.state})
         // this._getTimeLineList();
     }
 
     componentDidMount() {
-        // console.log({ name:'Component DID MOUNT!', state: this.state, props: this.props})
+        console.log({ name:'Component DID MOUNT!', state: this.state, props: this.props})
     }
 
     componentWillReceiveProps(nextProps) {
-        // console.log({ name:'Component WILL RECIEVE PROPS!', nextProps: nextProps})
-
+        console.log({ name:'Component WILL RECIEVE PROPS!', nextProps: nextProps})
+        if(Helper.isEmpty(nextProps.user_uid) === false) {
+            // this._getProfileTopInfo();
+        }
 
         // if(Helper.isEmpty(nextProps.user_uid) === false) {
         //     this._getTimeLineList();
         // }
 
-        if(Helper.isEmpty(nextProps.user_uid) === false) {
-            this._getProfileTopInfo();
-        }
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        // console.log({ name:'shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
+        console.log({ name:'shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
 
         const updateState = true;
 
@@ -56,29 +55,27 @@ export class ProfileTimelineComponent extends Component {
     }
 
     componentWillUnmount() {
-        // console.log({ name:'Component WILL UNMOUNT!' , state: this.state, props: this.props})
+        console.log({ name:'Component WILL UNMOUNT!' , state: this.state, props: this.props})
     }
 
 
     componentWillUpdate(nextProps, nextState) {
-        // console.log({ name:'Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+        console.log({ name:'Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // console.log({ name:'Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+        console.log({ name:'Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
     }
 
     _getTimeLineList = async () => {
         if(Helper.isEmpty(this.props.user_uid) === false) {
             this.props.putGetProfileTimeList(this.props.user_uid);
 
-            if(this.state.getTimeLineState === false) {
-                this.setState({
-                    getTimeLineState: true
-                })
-            }
-
-            // this.props.putGetProfileTopInfo(this.props.user_uid);
+            // if(this.state.getTimeLineState === false) {
+            //     this.setState({
+            //         getTimeLineState: true
+            //     })
+            // }
         }
     }
 
@@ -92,16 +89,15 @@ export class ProfileTimelineComponent extends Component {
     }
 
     render() {
-        Helper.DEBUG({props: this.props});
+        const { profileTopData } = this.props;
 
-        const { topData } = this.props;
         return (
             <div>
                 <MainNav />
 
                     {/* <!-- Begin page content --> */}
                     <TimelineRoot
-                        TOP_INFO = {topData}
+                        TOP_INFO = {profileTopData}
                         USER_UID = {this.props.user_uid}
                         TIME_LINE_LIST = {this.props.timeline_list}
                         GET_TIME_LINE_LIST = {this._getTimeLineList}
@@ -118,7 +114,7 @@ export class ProfileTimelineComponent extends Component {
 
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
-    topData: state.profile.profile_top_info.data,
+    profileTopData: state.profile.profile_top_info.data,
     timeline_list: state.profile.timeline_list.data,
 });
 

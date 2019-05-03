@@ -3,7 +3,6 @@ import { ProfileTop, ProfileNav } from 'elements';
 
 import { TimelineTodayPostWrite } from './TimelineTodayPostWrite';
 import { TimelistPostList } from './TimelistPostList';
-import * as Helper from 'lib/Helper';
 
 
 export class TimelineRoot extends Component {
@@ -28,11 +27,6 @@ export class TimelineRoot extends Component {
     }
 
     render() {
-
-        Helper.DEBUG({props: this.props});
-
-        const { TOP_INFO } = this.props
-
         return (
             <div className="container page-content">
                 <div className="row">
@@ -40,7 +34,7 @@ export class TimelineRoot extends Component {
                         <div className="row">
 
                             <ProfileTop
-                                top_info = {TOP_INFO}
+                                TOP_INFO = {this.props.TOP_INFO}
                             />
 
                         </div>

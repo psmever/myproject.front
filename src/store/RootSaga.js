@@ -25,7 +25,7 @@ function* fetchTryLogin(action) {
         });
 
     } catch(e) {
-        console.debug(e.data.message);
+        // console.debug(e.data.message);
         yield put({
             type: ActionTypes.FAILED_TRY_LOGIN,
             message: e.data.message
@@ -41,7 +41,7 @@ function* initializeTryLoginData() {
 }
 
 function* fetchTryUserBasicData(action) {
-    yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
     try {
         const tryResult = yield authAxios.get(constants.ServiceURL.get_login_user_profile_basic_data, {
             params: {
@@ -62,7 +62,7 @@ function* fetchTryUserBasicData(action) {
             message: e.data.message
         });
     }
-    yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+    // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
 }
 
 function* fetchTryUserAccountBasicDataSave(action) {
@@ -87,7 +87,7 @@ function* fetchTryUserAccountBasicDataSave(action) {
 }
 
 function* fetchGetSiteBasicData() {
-    yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
     try {
         const tryResult = yield API.getSiteBasicData();
 
@@ -104,11 +104,11 @@ function* fetchGetSiteBasicData() {
             message: error.data.message
         });
     }
-    yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+    // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
 }
 
 function* fetchGetProfileTimeline(action) {
-    yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
     try {
         const getResult = yield API.getUserProfileTimeLineList(action.user_uid);
         if(getResult.status === true ) {
@@ -140,12 +140,12 @@ function* fetchGetProfileTimeline(action) {
             }
         });
     }
-    yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+    // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
 }
 
 
 function* fetchGetProfileTopInfo(action) {
-    yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
     try {
         const getResult = yield API.postUserProfileTopInfo(action.user_uid);
         if(getResult.status === true ) {
@@ -177,7 +177,7 @@ function* fetchGetProfileTopInfo(action) {
             }
         });
     }
-    yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+    // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
 }
 
 
