@@ -74,6 +74,17 @@ const ProfileReducer = (state = initialReduxState.profile, action) => {
         case ActionTypes.FAILED_GET_TIMELINE_LIST:
             return { ...state, timeline_list: action.payload};
 
+        case ActionTypes.REQUEST_GET_PROFILE_TOP_INFO:
+            return { ...state};
+        case ActionTypes.SUCCEEDED_GET_PROFILE_TOP_INFO:
+            return { ...state, profile_top_info: action.payload };
+        case ActionTypes.FAILED_GET_PROFILE_TOP_INFO:
+            return { ...state, profile_top_info: action.payload};
+
+
+
+
+
         default:
             return state;
     }

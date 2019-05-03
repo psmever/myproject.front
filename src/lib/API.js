@@ -82,3 +82,17 @@ export function postUserProfileTimeLineTodayCommentSave(payload) {
 export function postUserProfileTimeLineLikeButtonClick(payload) {
     return authAxios.post('/api/v1/post/timeline/like', payload);
 }
+
+/**
+ *
+ * @param {*} payload
+ *
+ * 프로필 상단 정보
+ */
+export function postUserProfileTopInfo(user_uid) {
+    return authAxios.get('/api/v1/account/profile/topinfo', {
+        params: {
+            'user_uid': user_uid
+        }
+    });
+}
