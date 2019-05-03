@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ProfileFriendList = () => {
+export const FriendsList = () => {
     return (
         <div>
             <div className="tab-content">

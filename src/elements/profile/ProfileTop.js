@@ -40,7 +40,9 @@ export const ProfileTop = ({TOP_INFO}) => {
     );
 };
 
-
+ProfileTop.defaultProps = {
+    TOP_INFO:[]
+};
 
 
 

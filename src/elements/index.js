@@ -22,14 +22,12 @@ export { RegisterForm } from './form/RegisterForm';
 
 export { ProfileNav } from './profile/ProfileNav';
 export { ProfileTop } from './profile/ProfileTop';
-export { Friends } from './profile/Friends';
 export { Photos } from './profile/Photos';
 
 
 export { BirthdaySelect } from './select/BirthdaySelect';
 export { DefaultSelect } from './select/DefaultSelect';
 
-export { ProfileFriendList } from './friend/ProfileFriendList';
 export { ProfilePhotos } from './photo/ProfilePhotos';
 
 

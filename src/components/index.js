@@ -15,3 +15,4 @@ export { default as ProfilePhotoComponent } from './profile/ProfilePhotoComponen
 
 
 export { default as TimelineRoot } from './profile/timeline/TimelineRoot';
+export { default as FriendsRoot } from './profile/friends/FriendsRoot';
