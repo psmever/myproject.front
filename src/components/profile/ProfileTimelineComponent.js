@@ -26,28 +26,27 @@ export class ProfileTimelineComponent extends Component {
     }
 
     componentWillMount() {
-        console.log({ name:'Component WILL MOUNT!', state: this.state})
+        Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL MOUNT!', state: this.state})
         // this._getTimeLineList();
     }
 
     componentDidMount() {
-        console.log({ name:'Component DID MOUNT!', state: this.state, props: this.props})
+        Helper.DEBUG({ name:'ProfileTimelineComponent Component DID MOUNT!', state: this.state, props: this.props})
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log({ name:'Component WILL RECIEVE PROPS!', nextProps: nextProps})
-        if(Helper.isEmpty(nextProps.user_uid) === false) {
-            // this._getProfileTopInfo();
+        Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL RECIEVE PROPS!', nextProps: nextProps, nowProps: this.props})
+
+        if(nextProps.user_uid !== this.props.user_uid)
+        {
+            Helper.DEBUG({name: '1'});
+            this._getProfileTopInfo(nextProps.user_uid);
+            this._getTimeLineList(nextProps.user_uid);
         }
-
-        // if(Helper.isEmpty(nextProps.user_uid) === false) {
-        //     this._getTimeLineList();
-        // }
-
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log({ name:'shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
+        Helper.DEBUG({ name:'ProfileTimelineComponent shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
 
         const updateState = true;
 
@@ -55,37 +54,24 @@ export class ProfileTimelineComponent extends Component {
     }
 
     componentWillUnmount() {
-        console.log({ name:'Component WILL UNMOUNT!' , state: this.state, props: this.props})
+        Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL UNMOUNT!' , state: this.state, props: this.props})
     }
 
 
     componentWillUpdate(nextProps, nextState) {
-        console.log({ name:'Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+        Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log({ name:'Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+        Helper.DEBUG({ name:'ProfileTimelineComponent Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
     }
 
-    _getTimeLineList = async () => {
-        if(Helper.isEmpty(this.props.user_uid) === false) {
-            this.props.putGetProfileTimeList(this.props.user_uid);
-
-            // if(this.state.getTimeLineState === false) {
-            //     this.setState({
-            //         getTimeLineState: true
-            //     })
-            // }
-        }
+    _getTimeLineList = async (user_uid) => {
+        this.props.putGetProfileTimeList(user_uid);
     }
 
-    _getProfileTopInfo = async () => {
-        if(Helper.isEmpty(this.props.user_uid) === false) {
-            this.props.putGetProfileTopInfo(this.props.user_uid);
-            this.setState({
-                getProfileTopInfoState: true
-            })
-        }
+    _getProfileTopInfo = async (user_uid) => {
+        this.props.putGetProfileTopInfo(user_uid);
     }
 
     render() {
@@ -115,7 +101,8 @@ export class ProfileTimelineComponent extends Component {
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
     profileTopData: state.profile.profile_top_info.data,
-    timeline_list: state.profile.timeline_list.data,
+    timeline_first_idx: state.profile.timeline_list.data.first_idx,
+    timeline_list: state.profile.timeline_list.data.list,
 });
 
 const mapDispatchToProps = {

@@ -38,6 +38,14 @@ export class TimelineTodayPostWrite extends Component {
             Helper.globalAlert({text: saveTodayDataResult.message})
         } else {
             this.props.TIME_LIST_POST_SUCCESS();
+
+            this.setState({
+                today_contents: '',
+                selectImageInfo: {
+                    image_upload_idx: '',
+                    image_url: ''
+                }
+            });
         }
     }
 
@@ -75,6 +83,7 @@ export class TimelineTodayPostWrite extends Component {
                 <form>
                     <textarea className="form-control input-lg p-text-area" rows="5" placeholder="Whats in your mind today?"
                         onChange = {this._handleOnChangeTimeLineContents}
+                        value = {this.state.today_contents}
                     ></textarea>
                 </form>
                 <div className="box-footer box-form">

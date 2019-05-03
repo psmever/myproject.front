@@ -17,14 +17,9 @@ export class TimelineRoot extends Component {
     }
 
     _handleGetTimeLineList = () => {
-        // console.debug({name: '_handleTimeListPostSuccessEvent'});
-        this.props.GET_TIME_LINE_LIST();
+        this.props.GET_TIME_LINE_LIST(this.props.USER_UID);
     }
 
-    componentWillMount() {
-        // console.log({ name:'Component WILL MOUNT!'})
-        // this.props.GET_TIME_LINE_LIST();
-    }
 
     render() {
         return (
