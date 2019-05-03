@@ -87,9 +87,19 @@ export class TimelineTodayPostWrite extends Component {
                     ></textarea>
                 </form>
                 <div className="box-footer box-form">
-                    <button type="button" className="btn btn-azure pull-right"
+                <ul className="nav nav-pills">
+                        <li>
+                            <span className="file-input btn btn-azure btn-file">
+                                사진 선택 <input type="file" name="select_image" onChange={this._handleOnChangeTodayImage} />
+                            </span>
+                        </li>
+                        <li>
+                        <button type="button" className="btn btn-azure pull-right"
                         onClick={this._handleClickTimeLinePostButton}
                     >Post </button>
+                        </li>
+                    </ul>
+
                     {
                         Helper.isEmpty(this.state.selectImageInfo.image_url) === false ?
                         (
@@ -108,13 +118,6 @@ export class TimelineTodayPostWrite extends Component {
                         )
                     }
 
-                    <ul className="nav nav-pills">
-                        <li>
-                            <span className="file-input btn btn-azure btn-file">
-                                사진 선택 <input type="file" name="select_image" onChange={this._handleOnChangeTodayImage} />
-                            </span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         )

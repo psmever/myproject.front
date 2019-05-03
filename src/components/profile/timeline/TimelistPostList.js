@@ -2,28 +2,41 @@ import React, { Component } from "react";
 import * as Helper from 'lib/Helper';
 import * as API from 'lib/API';
 
+
+const initialState = {
+    commentState: {}
+};
+
+
 export class TimelistPostList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
 
-        }
+        this.state = initialState
     }
 
 
+
     handleCommentKeyPress = async (e) => {
+
+        const comment_contents = e.target.value;
+        const post_uuid = e.target.getAttribute('post_uuid');
+
         if (e.nativeEvent.key === "Enter") {
-            if(Helper.isEmpty(e.target.value) === false && Helper.isEmpty(e.target.getAttribute('post_uuid')) === false) {
+            if(Helper.isEmpty(comment_contents) === false && Helper.isEmpty(post_uuid) === false) {
+
                 const saveCommentDataResult = await API.postUserProfileTimeLineTodayCommentSave({
-                    post_uuid: e.target.getAttribute('post_uuid'),
-                    comment_contents: e.target.value
+                    post_uuid: post_uuid,
+                    comment_contents: comment_contents
                 });
 
                 if(saveCommentDataResult.status === false) {
                     Helper.globalAlert({text: saveCommentDataResult.message})
                 } else {
+
                     this.props.GET_TIME_LINE_LIST();
+                    this.setState(initialState);
                 }
             }
         }
@@ -41,6 +54,26 @@ export class TimelistPostList extends Component {
             this.props.GET_TIME_LINE_LIST();
         }
 
+    }
+
+    _handleOnChangeComment = (e) => {
+        const { name, value} = e.target
+        Helper.DEBUG({
+            name:'comment',
+            ename:name,
+            evalue:value,
+        });
+
+          Helper.DEBUG({state: this.state});
+
+
+          this.setState(prevState => {
+            prevState = JSON.parse(JSON.stringify(this.state.commentState));
+            prevState[name] = value;
+            return {
+                commentState: prevState
+            };
+         });
     }
 
     render() {
@@ -105,9 +138,11 @@ export class TimelistPostList extends Component {
                                 <div className="box-footer" style={{display: 'block'}}>
                                     <img className="img-responsive img-circle img-sm" src={user_image_url} alt="Alt Text"/>
                                     <div className="img-push">
-                                        <input type="text" className="form-control input-sm" placeholder="Press enter to post comment"
+                                        <input type="text" className="form-control input-sm" placeholder="Press enter to post comment" name={item.post_uuid}
                                             post_uuid={item.post_uuid}
                                             onKeyPress = {handleCommentKeyPress}
+                                            onChange={this._handleOnChangeComment}
+                                            value={Helper.isEmpty(this.state.commentState[item.post_uuid]) === false ? this.state.commentState[item.post_uuid]: ''}
                                         />
                                     </div>
                                 </div>

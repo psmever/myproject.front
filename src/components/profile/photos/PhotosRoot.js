@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-
 import { ProfileTop, ProfileNav } from 'elements';
 
-import { FriendsList } from './FriendsList';
+import { PhotosList } from './PhotosList';
 
-export class FriendsRoot extends Component {
+export class PhotosRoot extends Component {
 
     constructor(props) {
 
@@ -14,7 +13,6 @@ export class FriendsRoot extends Component {
 
         }
     }
-
 
     render() {
         return (
@@ -39,7 +37,7 @@ export class FriendsRoot extends Component {
                                     <div className="row">
 
                                         {/* <!--============= timeline posts--> */}
-                                        <FriendsList />
+                                        <PhotosList />
                                         {/* <!-- end timeline posts--> */}
 
                                     </div>
@@ -56,4 +54,7 @@ export class FriendsRoot extends Component {
 };
 
 
-export default FriendsRoot;
+
+
+
+export default PhotosRoot;

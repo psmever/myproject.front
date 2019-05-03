@@ -22,12 +22,8 @@ export { RegisterForm } from './form/RegisterForm';
 
 export { ProfileNav } from './profile/ProfileNav';
 export { ProfileTop } from './profile/ProfileTop';
-export { Photos } from './profile/Photos';
 
 
 export { BirthdaySelect } from './select/BirthdaySelect';
 export { DefaultSelect } from './select/DefaultSelect';
-
-export { ProfilePhotos } from './photo/ProfilePhotos';
-
 
