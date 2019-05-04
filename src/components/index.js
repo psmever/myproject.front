@@ -12,6 +12,7 @@ export { default as AccountPasswordComponent } from './account/AccountPasswordCo
 export { default as ProfileTimelineComponent } from './profile/ProfileTimelineComponent';
 export { default as ProfileFriendComponent } from './profile/ProfileFriendComponent';
 export { default as ProfilePhotoComponent } from './profile/ProfilePhotoComponent';
+export { default as ProfilePhotoViewComponent } from './profile/ProfilePhotoViewComponent';
 
 
 export { default as TimelineRoot } from './profile/timeline/TimelineRoot';

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 // import * as Helper from 'lib/Helper';
 
 /**
@@ -40,10 +41,14 @@ export class PhotosList extends Component {
                                     <div className="item-img-wrap ">
                                         <img src={item.upload_thumb_url} className="img-responsive" alt="workimg" />
                                         <div className="item-img-overlay">
-                                            <a href="#photos"
-                                            >
+                                            <Link to={{
+                                                pathname: '/profile/photos_view',
+                                                search: '?post_uuid='+item.post_uuid,
+                                                // hash: '#the-hash',
+                                                state: {}
+                                            }}>
                                                 <span></span>
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
