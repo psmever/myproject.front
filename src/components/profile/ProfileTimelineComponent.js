@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { MainNav, Footer } from 'elements';
 import { TimelineRoot } from './timeline/TimelineRoot';
-import * as Helper from 'lib/Helper';
+// import * as Helper from 'lib/Helper';
 
 import {
     putShowLoadingAction,
@@ -26,27 +26,25 @@ export class ProfileTimelineComponent extends Component {
     }
 
     componentWillMount() {
-        Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL MOUNT!', state: this.state})
+        // Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL MOUNT!', state: this.state})
         // this._getTimeLineList();
     }
 
     componentDidMount() {
-        Helper.DEBUG({ name:'ProfileTimelineComponent Component DID MOUNT!', state: this.state, props: this.props})
+        // Helper.DEBUG({ name:'ProfileTimelineComponent Component DID MOUNT!', state: this.state, props: this.props})
     }
 
     componentWillReceiveProps(nextProps) {
-        Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL RECIEVE PROPS!', nextProps: nextProps, nowProps: this.props})
+        // Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL RECIEVE PROPS!', nextProps: nextProps, nowProps: this.props})
 
-        if(nextProps.user_uid !== this.props.user_uid)
-        {
-            Helper.DEBUG({name: '1'});
+        if(nextProps.user_uid !== this.props.user_uid) {
             this._getProfileTopInfo(nextProps.user_uid);
             this._getTimeLineList(nextProps.user_uid);
         }
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        Helper.DEBUG({ name:'ProfileTimelineComponent shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
+        // Helper.DEBUG({ name:'ProfileTimelineComponent shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
 
         const updateState = true;
 
@@ -54,16 +52,16 @@ export class ProfileTimelineComponent extends Component {
     }
 
     componentWillUnmount() {
-        Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL UNMOUNT!' , state: this.state, props: this.props})
+        // Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL UNMOUNT!' , state: this.state, props: this.props})
     }
 
 
     componentWillUpdate(nextProps, nextState) {
-        Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+        // Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
     }
 
     componentDidUpdate(prevProps, prevState) {
-        Helper.DEBUG({ name:'ProfileTimelineComponent Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+        // Helper.DEBUG({ name:'ProfileTimelineComponent Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
     }
 
     _getTimeLineList = async (user_uid) => {

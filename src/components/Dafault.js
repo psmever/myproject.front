@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { MainNav, Footer } from 'elements';
-
+import * as Helper from 'lib/Helper';
 
 export class Default extends Component {
 
@@ -14,35 +14,35 @@ export class Default extends Component {
     }
 
     componentWillMount() {
-        console.log({ name:'Component WILL MOUNT!', state: this.state})
+        Helper.DEBUG({ name:'Component WILL MOUNT!', state: this.state})
         this.pageStart();
     }
 
     componentDidMount() {
-        console.log({ name:'Component DID MOUNT!', state: this.state})
+        Helper.DEBUG({ name:'Component DID MOUNT!', state: this.state})
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log({ name:'Component WILL RECIEVE PROPS!', nextProps: nextProps})
+        Helper.DEBUG({ name:'Component WILL RECIEVE PROPS!', nextProps: nextProps})
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log({ name:'shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
+        Helper.DEBUG({ name:'shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
 
         return true;
     }
 
     componentWillUnmount() {
-        console.log({ name:'Component WILL UNMOUNT!' , state: this.state})
+        Helper.DEBUG({ name:'Component WILL UNMOUNT!' , state: this.state})
     }
 
 
     componentWillUpdate(nextProps, nextState) {
-        console.log({ name:'Component WILL UPDATE!' , nextProps: nextProps, nextState,nextState})
+        Helper.DEBUG({ name:'Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log({ name:'Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+        Helper.DEBUG({ name:'Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
     }
 
 

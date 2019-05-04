@@ -144,6 +144,41 @@ function* fetchGetProfileTimeline(action) {
 }
 
 
+function* fetchGetProfilePhotosList(action) {
+    try {
+        const getResult = yield API.getUserProfilePhotosList(action.user_uid);
+        if(getResult.status === true ) {
+            yield put({
+                type: ActionTypes.SUCCEEDED_GET_PHOTOS_LIST,
+                payload: {
+                    state: true,
+                    data: getResult.data
+                }
+            });
+        } else {
+            yield put({
+                type: ActionTypes.FAILED_GET_PHOTOS_LIST,
+                payload: {
+                    state: false,
+                    data: [],
+                    message: getResult.message
+                }
+            });
+        }
+
+    } catch (error) {
+        yield put({
+            type: ActionTypes.FAILED_GET_PHOTOS_LIST,
+            payload: {
+                state: false,
+                data: [],
+                message: error.data.message
+            }
+        });
+    }
+}
+
+
 function* fetchGetProfileTopInfo(action) {
     // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
     try {
@@ -197,6 +232,7 @@ function* actionWatcher() {
     yield takeLatest(ActionTypes.REQUEST_GET_TIMELINE_LIST, fetchGetProfileTimeline);
 
     yield takeLatest(ActionTypes.REQUEST_GET_PROFILE_TOP_INFO, fetchGetProfileTopInfo);
+    yield takeLatest(ActionTypes.REQUEST_GET_PHOTOS_LIST, fetchGetProfilePhotosList);
 
 }
 

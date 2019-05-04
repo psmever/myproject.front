@@ -29,6 +29,10 @@ export default {
         user_basic_data_save_state: false
     },
     profile: {
+        photos_list: {
+            state: false,
+            data: []
+        },
         profile_top_info: {
             state: false,
             data: []
