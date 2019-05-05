@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { MainNav, Footer } from 'elements';
+import { PhotosViewRoot } from './photos_view/PhotosViewRoot';
 
 export class ProfilePhotoViewComponent extends Component {
 
@@ -18,7 +19,7 @@ export class ProfilePhotoViewComponent extends Component {
             <div>
                 <MainNav />
 
-asdasd
+                <PhotosViewRoot />
 
                 <Footer />
 
