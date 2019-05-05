@@ -15,9 +15,10 @@ import {
     AccountBasicComponent,
     AccountPersonalComponent,
     AccountPasswordComponent,
-    ProfileTimelineomponent,
+    ProfileTimelineComponent,
     ProfileFriendComponent,
-    ProfilePhotoComponent,
+    ProfilePhotosComponent,
+    PhotoViewComponent
 } from 'components';
 
 import { GlobalLoading } from 'elements';
@@ -49,13 +50,14 @@ class Root extends Component {
             if( loginInfo === null ) {
                 history.push('/auth/login');
             } else {
-                const { login_state, access_token, user_profile_set, user_uid } = loginInfo;
+                const { login_state, access_token, user_profile_set, user_uid, user_image_url } = loginInfo;
 
                 await putLoginData({
                         login_state: login_state,
                         user_uid: user_uid,
                         access_token: access_token,
                         user_profile_set: user_profile_set,
+                        user_image_url: user_image_url
                 });
 
                 if( login_state === true ) {
@@ -67,10 +69,10 @@ class Root extends Component {
 
                 if(login_state !== true) {
                     history.push('/auth/login');
-                } else if( user_profile_set === true) {
-                    history.push('/profile/timeline');
-                } else if( Helper.isEmpty(user_profile_set) === false) {
-                    history.push('/account/home');
+                // } else if( user_profile_set === true) {
+                //     history.push('/profile/timeline');
+                // } else if( Helper.isEmpty(user_profile_set) === false) {
+                //     history.push('/account/home');
                 }
             }
         }
@@ -147,9 +149,10 @@ class Root extends Component {
                     <Route path='/account/basic' component={ AccountBasicComponent }/>
                     <Route path='/account/personal' component={ AccountPersonalComponent }/>
                     <Route path='/account/password' component={ AccountPasswordComponent }/>
-                    <Route path='/profile/timeline' component={ ProfileTimelineomponent }/>
+                    <Route path='/profile/timeline' component={ ProfileTimelineComponent }/>
                     <Route path='/profile/friends' component={ ProfileFriendComponent }/>
-                    <Route path='/profile/photos' component={ ProfilePhotoComponent }/>
+                    <Route path='/profile/photos' component={ ProfilePhotosComponent }/>
+                    <Route path='/post/photo/view/:post_uuid' component={ PhotoViewComponent }/>
                 </Switch>
             );
         }

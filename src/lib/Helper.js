@@ -1,3 +1,4 @@
+import * as Constants from 'lib/Constants';
 
 export const globalAlert = (d) => {
     const swal = require('sweetalert');
@@ -114,4 +115,17 @@ export function httpHtml(content) {
     const reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
 
     return content.replace(reg, "<a href='$1$2'>$1$2</a>");
+}
+
+/**
+ * 사용자 이미지 갖고 오기
+ */
+export const getUserImageURL = () => {
+    const loginInfo = storageManager.get('logininfo') || null;
+
+    if(isEmpty(loginInfo.login_state) === false && loginInfo.login_state === true) {
+        return loginInfo.user_image_url
+    } else {
+        return Constants.globalConst.default_user_image
+    }
 }

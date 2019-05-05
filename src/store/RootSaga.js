@@ -25,7 +25,7 @@ function* fetchTryLogin(action) {
         });
 
     } catch(e) {
-        console.debug(e.data.message);
+        // console.debug(e.data.message);
         yield put({
             type: ActionTypes.FAILED_TRY_LOGIN,
             message: e.data.message
@@ -41,7 +41,7 @@ function* initializeTryLoginData() {
 }
 
 function* fetchTryUserBasicData(action) {
-    yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
     try {
         const tryResult = yield authAxios.get(constants.ServiceURL.get_login_user_profile_basic_data, {
             params: {
@@ -62,7 +62,7 @@ function* fetchTryUserBasicData(action) {
             message: e.data.message
         });
     }
-    yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+    // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
 }
 
 function* fetchTryUserAccountBasicDataSave(action) {
@@ -87,7 +87,7 @@ function* fetchTryUserAccountBasicDataSave(action) {
 }
 
 function* fetchGetSiteBasicData() {
-    yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
     try {
         const tryResult = yield API.getSiteBasicData();
 
@@ -104,8 +104,118 @@ function* fetchGetSiteBasicData() {
             message: error.data.message
         });
     }
-    yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+    // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
 }
+
+function* fetchGetProfileTimeline(action) {
+    // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    try {
+        const getResult = yield API.getUserProfileTimeLineList(action.user_uid);
+        if(getResult.status === true ) {
+            yield put({
+                type: ActionTypes.SUCCEEDED_GET_TIMELINE_LIST,
+                payload: {
+                    state: true,
+                    data: getResult.data
+                }
+            });
+        } else {
+            yield put({
+                type: ActionTypes.FAILED_GET_TIMELINE_LIST,
+                payload: {
+                    state: false,
+                    data: [],
+                    message: getResult.message
+                }
+            });
+        }
+
+    } catch (error) {
+        yield put({
+            type: ActionTypes.FAILED_GET_TIMELINE_LIST,
+            payload: {
+                state: false,
+                data: [],
+                message: error.data.message
+            }
+        });
+    }
+    // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+}
+
+
+function* fetchGetProfilePhotosList(action) {
+    try {
+        const getResult = yield API.getUserProfilePhotosList(action.user_uid);
+        if(getResult.status === true ) {
+            yield put({
+                type: ActionTypes.SUCCEEDED_GET_PHOTOS_LIST,
+                payload: {
+                    state: true,
+                    data: getResult.data
+                }
+            });
+        } else {
+            yield put({
+                type: ActionTypes.FAILED_GET_PHOTOS_LIST,
+                payload: {
+                    state: false,
+                    data: [],
+                    message: getResult.message
+                }
+            });
+        }
+
+    } catch (error) {
+        yield put({
+            type: ActionTypes.FAILED_GET_PHOTOS_LIST,
+            payload: {
+                state: false,
+                data: [],
+                message: error.data.message
+            }
+        });
+    }
+}
+
+
+function* fetchGetProfileTopInfo(action) {
+    // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    try {
+        const getResult = yield API.postUserProfileTopInfo(action.user_uid);
+        if(getResult.status === true ) {
+            yield put({
+                type: ActionTypes.SUCCEEDED_GET_PROFILE_TOP_INFO,
+                payload: {
+                    state: true,
+                    data: getResult.data
+                }
+            });
+        } else {
+            yield put({
+                type: ActionTypes.FAILED_GET_PROFILE_TOP_INFO,
+                payload: {
+                    state: false,
+                    data: [],
+                    message: getResult.message
+                }
+            });
+        }
+
+    } catch (error) {
+        yield put({
+            type: ActionTypes.FAILED_GET_PROFILE_TOP_INFO,
+            payload: {
+                state: false,
+                data: [],
+                message: error.data.message
+            }
+        });
+    }
+    // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+}
+
+
 
 function* actionWatcher() {
 
@@ -118,6 +228,11 @@ function* actionWatcher() {
 
     yield takeLatest(ActionTypes.REQUEST_GET_USER_BASIC_DATA, fetchTryUserBasicData);
     yield takeLatest(ActionTypes.REQUEST_USER_ACCOUNT_BASIC_DATA, fetchTryUserAccountBasicDataSave);
+
+    yield takeLatest(ActionTypes.REQUEST_GET_TIMELINE_LIST, fetchGetProfileTimeline);
+
+    yield takeLatest(ActionTypes.REQUEST_GET_PROFILE_TOP_INFO, fetchGetProfileTopInfo);
+    yield takeLatest(ActionTypes.REQUEST_GET_PHOTOS_LIST, fetchGetProfilePhotosList);
 
 }
 

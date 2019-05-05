@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { MainNav, Footer } from 'elements';
-
+import * as Helper from 'lib/Helper';
 
 export class Default extends Component {
 
@@ -12,6 +12,41 @@ export class Default extends Component {
             user_uid: false,
         }
     }
+
+    componentWillMount() {
+        Helper.DEBUG({ name:'Component WILL MOUNT!', state: this.state})
+        this.pageStart();
+    }
+
+    componentDidMount() {
+        Helper.DEBUG({ name:'Component DID MOUNT!', state: this.state})
+    }
+
+    componentWillReceiveProps(nextProps) {
+        Helper.DEBUG({ name:'Component WILL RECIEVE PROPS!', nextProps: nextProps})
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        Helper.DEBUG({ name:'ShouldComponentUpdate', nextProps: nextProps, nextState:nextState});
+
+        return true;
+    }
+
+    componentWillUnmount() {
+        Helper.DEBUG({ name:'Component WILL UNMOUNT!' , state: this.state})
+    }
+
+
+    componentWillUpdate(nextProps, nextState) {
+        Helper.DEBUG({ name:'Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        Helper.DEBUG({ name:'Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+    }
+
+
+
 
     render() {
         return (

@@ -9,6 +9,14 @@ export { default as AccountBasicComponent } from './account/AccountBasicComponen
 export { default as AccountPersonalComponent } from './account/AccountPersonalComponent';
 export { default as AccountPasswordComponent } from './account/AccountPasswordComponent';
 
-export { default as ProfileTimelineomponent } from './profile/ProfileTimelineomponent';
+export { default as ProfileTimelineComponent } from './profile/ProfileTimelineComponent';
 export { default as ProfileFriendComponent } from './profile/ProfileFriendComponent';
-export { default as ProfilePhotoComponent } from './profile/ProfilePhotoComponent';
+export { default as ProfilePhotosComponent } from './profile/ProfilePhotosComponent';
+
+
+export { default as TimelineRoot } from './profile/timeline/TimelineRoot';
+export { default as FriendsRoot } from './profile/friends/FriendsRoot';
+export { default as PhotosRoot } from './profile/photos/PhotosRoot';
+
+
+export { default as PhotoViewComponent } from './post/photo/PhotoViewComponent';
