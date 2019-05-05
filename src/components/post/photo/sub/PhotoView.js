@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class PhotosView extends Component {
+export class PhotoView extends Component {
 
     render() {
 
@@ -14,4 +14,4 @@ export class PhotosView extends Component {
 };
 
 
-export default PhotosView;
+export default PhotoView;

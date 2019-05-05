@@ -12,7 +12,7 @@ import { PhotosRoot } from './photos/PhotosRoot';
 
 // import * as Helper from 'lib/Helper';
 
-export class ProfilePhotoComponent extends Component {
+export class ProfilePhotosComponent extends Component {
 
     constructor(props) {
 
@@ -104,4 +104,4 @@ const mapDispatchToProps = {
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(ProfilePhotoComponent));
+)(ProfilePhotosComponent));

@@ -42,7 +42,7 @@ export class PhotosList extends Component {
                                         <img src={item.upload_thumb_url} className="img-responsive" alt="workimg" />
                                         <div className="item-img-overlay">
                                             <Link to={{
-                                                pathname: '/profile/photos_view',
+                                                pathname: '/post/photo/view',
                                                 search: '?post_uuid='+item.post_uuid,
                                                 // hash: '#the-hash',
                                                 state: {}

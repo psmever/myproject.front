@@ -17,8 +17,8 @@ import {
     AccountPasswordComponent,
     ProfileTimelineComponent,
     ProfileFriendComponent,
-    ProfilePhotoComponent,
-    ProfilePhotoViewComponent
+    ProfilePhotosComponent,
+    PhotoViewComponent
 } from 'components';
 
 import { GlobalLoading } from 'elements';
@@ -151,8 +151,8 @@ class Root extends Component {
                     <Route path='/account/password' component={ AccountPasswordComponent }/>
                     <Route path='/profile/timeline' component={ ProfileTimelineComponent }/>
                     <Route path='/profile/friends' component={ ProfileFriendComponent }/>
-                    <Route path='/profile/photos' component={ ProfilePhotoComponent }/>
-                    <Route path='/profile/photos_view' component={ ProfilePhotoViewComponent }/>
+                    <Route path='/profile/photos' component={ ProfilePhotosComponent }/>
+                    <Route path='/post/photo/view' component={ PhotoViewComponent }/>
                 </Switch>
             );
         }

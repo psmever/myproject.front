@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { MainNav, Footer } from 'elements';
-import { PhotosViewRoot } from './photos_view/PhotosViewRoot';
+import { PhotoViewRoot } from './sub/PhotoViewRoot';
 
-export class ProfilePhotoViewComponent extends Component {
+export class PhotoViewComponent extends Component {
 
     constructor(props) {
 
@@ -19,7 +19,7 @@ export class ProfilePhotoViewComponent extends Component {
             <div>
                 <MainNav />
 
-                <PhotosViewRoot />
+                <PhotoViewRoot />
 
                 <Footer />
 
@@ -29,4 +29,4 @@ export class ProfilePhotoViewComponent extends Component {
     }
 };
 
-export default ProfilePhotoViewComponent;
+export default PhotoViewComponent;
