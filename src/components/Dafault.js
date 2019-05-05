@@ -27,7 +27,7 @@ export class Default extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        Helper.DEBUG({ name:'shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
+        Helper.DEBUG({ name:'ShouldComponentUpdate', nextProps: nextProps, nextState:nextState});
 
         return true;
     }

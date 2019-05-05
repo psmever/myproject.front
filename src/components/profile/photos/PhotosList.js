@@ -41,14 +41,14 @@ export class PhotosList extends Component {
                                     <div className="item-img-wrap ">
                                         <img src={item.upload_thumb_url} className="img-responsive" alt="workimg" />
                                         <div className="item-img-overlay">
+
                                             <Link to={{
-                                                pathname: '/post/photo/view',
-                                                search: '?post_uuid='+item.post_uuid,
-                                                // hash: '#the-hash',
-                                                state: {}
+                                                pathname: "/post/photo/view/"+item.post_uuid,
+                                                post_uuid: item.post_uuid
                                             }}>
                                                 <span></span>
                                             </Link>
+
                                         </div>
                                     </div>
                                 </div>

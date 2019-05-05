@@ -152,7 +152,7 @@ class Root extends Component {
                     <Route path='/profile/timeline' component={ ProfileTimelineComponent }/>
                     <Route path='/profile/friends' component={ ProfileFriendComponent }/>
                     <Route path='/profile/photos' component={ ProfilePhotosComponent }/>
-                    <Route path='/post/photo/view' component={ PhotoViewComponent }/>
+                    <Route path='/post/photo/view/:post_uuid' component={ PhotoViewComponent }/>
                 </Switch>
             );
         }

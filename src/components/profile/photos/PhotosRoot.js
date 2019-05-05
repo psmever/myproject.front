@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { ProfileTop, ProfileNav } from 'elements';
 
 import { PhotosList } from './PhotosList';
-import * as Helper from 'lib/Helper';
+// import * as Helper from 'lib/Helper';
 
 export class PhotosRoot extends Component {
 
@@ -16,10 +16,10 @@ export class PhotosRoot extends Component {
     }
 
     render() {
-        Helper.DEBUG({
-            name: 'PhotosRoot render',
-            props: this.props
-        })
+        // Helper.DEBUG({
+        //     name: 'PhotosRoot render',
+        //     props: this.props
+        // })
         return (
             <div className="container page-content">
                 <div className="row">
