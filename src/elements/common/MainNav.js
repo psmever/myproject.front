@@ -51,7 +51,7 @@ export class MainNav extends Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <Link className="navbar-brand" to="/home"><b>DayDay</b></Link>
+                        <Link className="navbar-brand" to="/main"><b>DayDay</b></Link>
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav navbar-right">

@@ -19,17 +19,16 @@ export { AccountPasswordForm } from './form/AccountPasswordForm';
 export { AccountPersonalForm } from './form/AccountPersonalForm';
 export { LoginForm } from './form/LoginForm';
 export { RegisterForm } from './form/RegisterForm';
+export { CommentForm } from './form/CommentForm';
 
 export { ProfileNav } from './profile/ProfileNav';
 export { ProfileTop } from './profile/ProfileTop';
-export { Friends } from './profile/Friends';
-export { Photos } from './profile/Photos';
 
 
 export { BirthdaySelect } from './select/BirthdaySelect';
 export { DefaultSelect } from './select/DefaultSelect';
 
-export { ProfileFriendList } from './friend/ProfileFriendList';
-export { ProfilePhotos } from './photo/ProfilePhotos';
+export { DefaultComment } from './comment/DefaultComment';
 
-
+export { PhotoViewInfo } from './photo/PhotoViewInfo';
+export { PhotoViewHead } from './photo/PhotoViewHead';

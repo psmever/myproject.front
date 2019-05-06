@@ -17,7 +17,8 @@ import {
     AccountPasswordComponent,
     ProfileTimelineComponent,
     ProfileFriendComponent,
-    ProfilePhotoComponent,
+    ProfilePhotosComponent,
+    PhotoViewComponent
 } from 'components';
 
 import { GlobalLoading } from 'elements';
@@ -68,10 +69,10 @@ class Root extends Component {
 
                 if(login_state !== true) {
                     history.push('/auth/login');
-                } else if( user_profile_set === true) {
-                    history.push('/profile/timeline');
-                } else if( Helper.isEmpty(user_profile_set) === false) {
-                    history.push('/account/home');
+                // } else if( user_profile_set === true) {
+                //     history.push('/profile/timeline');
+                // } else if( Helper.isEmpty(user_profile_set) === false) {
+                //     history.push('/account/home');
                 }
             }
         }
@@ -141,6 +142,7 @@ class Root extends Component {
                     <Route path='/test' component={ TestComponent }/>
                     <Route exact path='/' component={ MainComponent }/>
                     <Route path='/main' component={ MainComponent }/>
+                    <Route path='/home' component={ MainComponent }/>
                     <Route path='/auth/login' component={ LoginComponent }/>
                     <Route path='/auth/logout' component={ LogoutComponent }/>
                     <Route path='/auth/register' component={ RegisterComponent }/>
@@ -150,7 +152,8 @@ class Root extends Component {
                     <Route path='/account/password' component={ AccountPasswordComponent }/>
                     <Route path='/profile/timeline' component={ ProfileTimelineComponent }/>
                     <Route path='/profile/friends' component={ ProfileFriendComponent }/>
-                    <Route path='/profile/photos' component={ ProfilePhotoComponent }/>
+                    <Route path='/profile/photos' component={ ProfilePhotosComponent }/>
+                    <Route path='/post/photo/view/:post_uuid' component={ PhotoViewComponent }/>
                 </Switch>
             );
         }

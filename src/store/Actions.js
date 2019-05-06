@@ -54,3 +54,21 @@ export const putGetProfileTimeList = (user_uid) => ({
     type: ActionTypes.REQUEST_GET_TIMELINE_LIST,
     user_uid: user_uid
 });
+
+
+export const putGetProfileTopInfo = (user_uid) => ({
+    type: ActionTypes.REQUEST_GET_PROFILE_TOP_INFO,
+    user_uid: user_uid
+});
+
+
+/**
+ *
+ * @param {*} user_uid
+ *
+ * 프로필 포토 리스트
+ */
+export const putGetProfilePhotosList = (user_uid) => ({
+    type: ActionTypes.REQUEST_GET_PHOTOS_LIST,
+    user_uid: user_uid
+});

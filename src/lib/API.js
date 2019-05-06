@@ -46,7 +46,7 @@ export function postUserProfilePhotoChange(payload) {
 
 
 export function postUserProfileTimeLineTodaySave(payload) {
-    return authAxios.post('/api/v1/post/timeline/today', payload);
+    return authAxios.post('/api/v1/profile/timeline/save', payload);
 }
 
 
@@ -54,15 +54,33 @@ export function postUserProfileTimeLineTodayPhotoSave(payload) {
     return authAxios.post('/api/v1/upload/image/todayimage', payload);
 }
 
-
+/**
+ *
+ * @param {*} user_uid
+ *
+ * 프로필 타임라인 리스트
+ */
 export function getUserProfileTimeLineList(user_uid) {
-    return authAxios.get('/api/v1/post/timeline/today', {
+    return authAxios.get('/api/v1/profile/timeline/list', {
         params: {
             'user_uid': user_uid
         }
     });
 }
 
+/**
+ *
+ * @param {*} user_uid
+ *
+ * 프로필 사진 리스트
+ */
+export function getUserProfilePhotosList(user_uid) {
+    return authAxios.get('/api/v1/profile/photos/list', {
+        params: {
+            'user_uid': user_uid
+        }
+    });
+}
 
 /**
  *
@@ -71,7 +89,7 @@ export function getUserProfileTimeLineList(user_uid) {
  * 코멘트 저장
  */
 export function postUserProfileTimeLineTodayCommentSave(payload) {
-    return authAxios.post('/api/v1/post/timeline/comment', payload);
+    return authAxios.post('/api/v1/profile/timeline/comment', payload);
 }
 
 /**
@@ -80,5 +98,29 @@ export function postUserProfileTimeLineTodayCommentSave(payload) {
  * 타임 라인 라이크 버튼
  */
 export function postUserProfileTimeLineLikeButtonClick(payload) {
-    return authAxios.post('/api/v1/post/timeline/like', payload);
+    return authAxios.post('/api/v1/profile/timeline/like', payload);
+}
+
+/**
+ *
+ * @param {*} payload
+ *
+ * 프로필 상단 정보
+ */
+export function postUserProfileTopInfo(user_uid) {
+    return authAxios.get('/api/v1/profile/top/info', {
+        params: {
+            'user_uid': user_uid
+        }
+    });
+}
+
+/**
+ *
+ * @param {*} post_uuid
+ *
+ * 포토 뷰 정보
+ */
+export function getPhotoViewInfo(post_uuid) {
+    return authAxios.get('/api/v1/post/photo/view/'+post_uuid);
 }

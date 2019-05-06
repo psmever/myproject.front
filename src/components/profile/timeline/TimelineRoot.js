@@ -17,24 +17,20 @@ export class TimelineRoot extends Component {
     }
 
     _handleGetTimeLineList = () => {
-        // console.debug({name: '_handleTimeListPostSuccessEvent'});
-        this.props.GET_TIME_LINE_LIST();
+        this.props.GET_TIME_LINE_LIST(this.props.USER_UID);
     }
 
-    componentWillMount() {
-        // console.log({ name:'Component WILL MOUNT!'})
-        // this.props.GET_TIME_LINE_LIST();
-    }
 
     render() {
-        console.debug({name: 'TimelineRoot render() ', props: this.props});
         return (
             <div className="container page-content">
                 <div className="row">
                     <div className="col-md-10 col-md-offset-1">
                         <div className="row">
 
-                            <ProfileTop />
+                            <ProfileTop
+                                TOP_INFO = {this.props.TOP_INFO}
+                            />
 
                         </div>
                         <div className="row">
