@@ -19,10 +19,20 @@ export class PhotoViewComponent extends Component {
 
     componentWillMount() {
         Helper.DEBUG({ name:'PhotoViewComponent Component WILL MOUNT!', state: this.state})
+        if( !_.isEqual(this.props.match.params.post_uuid, this.state.post_uuid) ) {
+            this._setPostUUid(this.props.match.params.post_uuid)
+        }
+        Helper.DEBUG({
+            now: this.state.post_uuid,
+        });
     }
 
     componentDidMount() {
         Helper.DEBUG({ name:'PhotoViewComponent Component DID MOUNT!', state: this.state})
+
+        Helper.DEBUG({
+            now: this.state.post_uuid,
+        });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -30,36 +40,49 @@ export class PhotoViewComponent extends Component {
 
         // Helper.DEBUG({ next: nextProps.match.params.post_uuid, this: this.props.match.params.post_uuid });
 
-        if(_.isEqual(nextProps.match.params.post_uuid, this.props.match.params)) {
-            // console.log(1);
-        }
-    }
+     }
 
     shouldComponentUpdate(nextProps, nextState) {
         Helper.DEBUG({ name:'PhotoViewComponent ShouldComponentUpdate', nextProps: nextProps, nextState:nextState});
 
-        if( !_.isEqual(nextProps.match.params.post_uuid, this.state.post_uuid) ) {
-            this.setState({
-                post_uuid: nextProps.match.params.post_uuid
-            });
-        }
+        Helper.DEBUG({
+            now: this.state.post_uuid,
+        });
+
         return true;
     }
 
     componentWillUnmount() {
         Helper.DEBUG({ name:'PhotoViewComponent Component WILL UNMOUNT!' , state: this.state})
+
+        Helper.DEBUG({
+            now: this.state.post_uuid,
+        });
     }
 
 
     componentWillUpdate(nextProps, nextState) {
         Helper.DEBUG({ name:'PhotoViewComponent Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+
+        Helper.DEBUG({
+            now: this.state.post_uuid,
+        });
     }
 
     componentDidUpdate(prevProps, prevState) {
         Helper.DEBUG({ name:'PhotoViewComponent Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+        Helper.DEBUG({
+            this_state: this.state
+        });
     }
 
 
+    _setPostUUid = (new_post_uuid) => {
+
+        this.setState({
+            post_uuid: new_post_uuid
+        });
+    }
 
 
 

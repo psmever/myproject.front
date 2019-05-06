@@ -74,6 +74,12 @@ export const DEBUG = (e) => {
     console.debug('%c::DEBUG::', 'color: green; font-weight: bold;',e);
 };
 
+export const DEBUG2 = (e) => {
+    // console.log('SENT URL: %c %s >>>>>> %c | HTTP Method: %c"%s" %c| PARAMS: %O', "color: green; font-size: 12px", e, "color: black;", "color: #BA49FF; font-weight: bold; font-size: 12px", e, "color: black;", e);
+    // console.log(`bear: ${e}`)
+    // console.table(`%c${e}`, `color:Blue`)
+    console.table(e);
+};
 
 export const storageManager = {
     set: (key, object) => {
