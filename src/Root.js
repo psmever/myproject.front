@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import {
     TestComponent,
     MainComponent,
+    HomeComponent,
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
@@ -142,7 +143,7 @@ class Root extends Component {
                     <Route path='/test' component={ TestComponent }/>
                     <Route exact path='/' component={ MainComponent }/>
                     <Route path='/main' component={ MainComponent }/>
-                    <Route path='/home' component={ MainComponent }/>
+                    <Route path='/home' component={ HomeComponent }/>
                     <Route path='/auth/login' component={ LoginComponent }/>
                     <Route path='/auth/logout' component={ LogoutComponent }/>
                     <Route path='/auth/register' component={ RegisterComponent }/>
