@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as Helper from 'lib/Helper';
 import * as API from 'lib/API';
-
+import { TodayWriteForm } from 'elements';
 
 export class TimelineTodayPostWrite extends Component {
 
@@ -17,13 +17,6 @@ export class TimelineTodayPostWrite extends Component {
                 image_url: ''
             }
         }
-    }
-
-    componentDidUpdate () {
-        // console.debug({
-        //     state: this.state,
-        //     props: this.props
-        // });
     }
 
     _handleClickTimeLinePostButton = async (e) => {
@@ -79,46 +72,14 @@ export class TimelineTodayPostWrite extends Component {
     render() {
 
         return (
-            <div className="box profile-info n-border-top">
-                <form>
-                    <textarea className="form-control input-lg p-text-area" rows="5" placeholder="Whats in your mind today?"
-                        onChange = {this._handleOnChangeTimeLineContents}
-                        value = {this.state.today_contents}
-                    ></textarea>
-                </form>
-                <div className="box-footer box-form">
-                <ul className="nav nav-pills">
-                        <li>
-                            <span className="file-input btn btn-azure btn-file">
-                                사진 선택 <input type="file" name="select_image" onChange={this._handleOnChangeTodayImage} />
-                            </span>
-                        </li>
-                        <li>
-                        <button type="button" className="btn btn-azure pull-right"
-                        onClick={this._handleClickTimeLinePostButton}
-                    >Post </button>
-                        </li>
-                    </ul>
-
-                    {
-                        Helper.isEmpty(this.state.selectImageInfo.image_url) === false ?
-                        (
-                            <ul className="nav nav-pills">
-                                <li>
-                                    <div className="box-body" style={{display: 'block'}}>
-                                        <img className="img-responsive timeline-post-img-center" src={this.state.selectImageInfo.image_url} alt=""/>
-                                    </div>
-                                </li>
-                            </ul>
-                        )
-                        :
-                        (
-                            <ul className="nav nav-pills">
-                            </ul>
-                        )
-                    }
-
-                </div>
+            <div>
+                <TodayWriteForm
+                    ONCHANGE_CONTENTS = {this._handleOnChangeTimeLineContents}
+                    ONCHANGE_SELECT_IMAGE = {this._handleOnChangeTodayImage}
+                    CONTENTS_VALUE = {this.state.today_contents}
+                    ONCLICK_POST_BUTTON = {this._handleClickTimeLinePostButton}
+                    SELECT_IMAGE_URL = {this.state.selectImageInfo.image_url}
+                />
             </div>
         )
     }
