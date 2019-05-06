@@ -58,22 +58,13 @@ export class TimelistPostList extends Component {
 
     _handleOnChangeComment = (e) => {
         const { name, value} = e.target
-        Helper.DEBUG({
-            name:'comment',
-            ename:name,
-            evalue:value,
-        });
-
-          Helper.DEBUG({state: this.state});
-
-
-          this.setState(prevState => {
+        this.setState(prevState => {
             prevState = JSON.parse(JSON.stringify(this.state.commentState));
             prevState[name] = value;
             return {
                 commentState: prevState
             };
-         });
+        });
     }
 
     render() {

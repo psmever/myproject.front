@@ -114,3 +114,13 @@ export function postUserProfileTopInfo(user_uid) {
         }
     });
 }
+
+/**
+ *
+ * @param {*} post_uuid
+ *
+ * 포토 뷰 정보
+ */
+export function getPhotoViewInfo(post_uuid) {
+    return authAxios.get('/api/v1/post/photo/view/'+post_uuid);
+}

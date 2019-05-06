@@ -45,7 +45,10 @@ export class Default extends Component {
         Helper.DEBUG({ name:'Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
     }
 
-
+    componentDidCatch(error, info) {
+        Helper.DEBUG({ name:'Component DID Catch!' , error: error, info: info})
+        //Handle error.
+    }
 
 
     render() {
