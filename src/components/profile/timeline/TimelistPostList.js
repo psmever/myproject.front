@@ -70,12 +70,10 @@ export class TimelistPostList extends Component {
 
     render() {
         const user_image_url = Helper.getUserImageURL();
-
-        const handleCommentKeyPress = this.handleCommentKeyPress;
-
         return (
             <div>
                 <DefaultPostList
+                    USER_LOGIN_IMAGE_URL = {user_image_url}
                     POST_LIST={this.props.TIME_LINE_LIST}
                     HANDLE_ONCHANGE_COMMENT={this._handleOnChangeComment}
                     COMMENT_CONTENTS={this.state.commentState}
