@@ -13,7 +13,8 @@ export const PhotoViewHead = ({
                     <Link to={{
                             pathname: "/profile/timeline/"+PHOTO_USER_UID,
                             post_uuid: PHOTO_USER_UID
-                        }}><img src={PHOTO_USER_IMAGE_URL} alt=""/></Link>
+                        }}><img src={PHOTO_USER_IMAGE_URL} alt=""/>
+                    </Link>
                     <h1>{PHOTO_USER_NAME}</h1>
                     <p>@{PHOTO_USER_NAME}</p>
                 </div>

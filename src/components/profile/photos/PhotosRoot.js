@@ -16,10 +16,7 @@ export class PhotosRoot extends Component {
     }
 
     render() {
-        // Helper.DEBUG({
-        //     name: 'PhotosRoot render',
-        //     props: this.props
-        // })
+
         return (
             <div className="container page-content">
                 <div className="row">

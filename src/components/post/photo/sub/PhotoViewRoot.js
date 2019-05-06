@@ -52,6 +52,20 @@ export class PhotoViewRoot extends Component {
         });
     }
 
+    _handleClickLikeButton = async (e) => {
+        const saveCommentLikeResult = await API.postUserProfileTimeLineLikeButtonClick({
+            like_command: 'add',
+            post_uuid: this.props.POST_UUID
+        });
+
+        if(saveCommentLikeResult.status === false) {
+            Helper.globalAlert({text: saveCommentLikeResult.message})
+        } else {
+            // this.props.GET_TIME_LINE_LIST();
+            this.props.GET_PHOTO_VIEW_INFO(this.props.POST_UUID);
+        }
+    }
+
     render() {
         return (
 
@@ -72,6 +86,7 @@ export class PhotoViewRoot extends Component {
                                 <div className="box box-widget">
 
                                         <PhotoViewInfo
+                                            PHOTO_USER_UID = {this.props.USER_INFO.user_uid}
                                             PHOTO_USER_IMAGE_URL = {this.props.PHOTO_INFO.user_image_url}
                                             PHOTO_USER_NAME = {this.props.PHOTO_INFO.user_name}
                                             PHOTO_REGIST_DATE_STRING = {this.props.PHOTO_INFO.regist_date_string}
@@ -79,6 +94,7 @@ export class PhotoViewRoot extends Component {
                                             PHOTO_POST_CONTENTS = {this.props.PHOTO_INFO.timeline_content}
                                             PHOTO_LIKE_COUNT = {this.props.PHOTO_INFO.like_count}
                                             PHOTO_COMMENT_COUNT = {this.props.PHOTO_INFO.post_like_count}
+                                            CLICK_LIKE_BUTTON = {this._handleClickLikeButton}
                                         >
                                         </PhotoViewInfo>
 
