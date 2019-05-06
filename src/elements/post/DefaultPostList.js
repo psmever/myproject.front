@@ -1,19 +1,16 @@
 import React from "react";
 import _ from 'lodash';
-import * as Helper from 'lib/Helper';
+// import * as Helper from 'lib/Helper';
 
 export const DefaultPostList = ({
+    USER_LOGIN_IMAGE_URL,
     POST_LIST,
     HANDLE_COMMENT_KEYPRESS,
     HANDLE_ONCLICK_LIKEBUTTON,
     HANDLE_ONCHANGE_COMMENT,
     COMMENT_CONTENTS
 }) => {
-    const user_image_url = Helper.getUserImageURL();
-
     return (
-
-
         <div>
             {
                 POST_LIST.map((item) => {
@@ -68,7 +65,7 @@ export const DefaultPostList = ({
                             </div>
 
                             <div className="box-footer" style={{display: 'block'}}>
-                                <img className="img-responsive img-circle img-sm" src={user_image_url} alt="Alt Text"/>
+                                <img className="img-responsive img-circle img-sm" src={USER_LOGIN_IMAGE_URL} alt="Alt Text"/>
                                 <div className="img-push">
                                     <input type="text" className="form-control input-sm" placeholder="댓글을 입력해 주세요." name={(_.isUndefined(item.post_uuid) && _.isEmpty(item.post_uuid) ) ? '' :  item.post_uuid}
                                         post_uuid={(_.isUndefined(item.post_uuid) && _.isEmpty(item.post_uuid) ) ? '' :  item.post_uuid}
