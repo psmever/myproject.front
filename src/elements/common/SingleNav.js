@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 export const SingleNav = () => {
     return (
@@ -13,7 +13,7 @@ export const SingleNav = () => {
                         <span className="icon-bar bar2"></span>
                         <span className="icon-bar bar3"></span>
                     </button>
-                    <a className="navbar-brand" href="profile.html">Day-Day</a>
+                    <Link className="navbar-brand" to="/home"><b>DayDay</b></Link>
                 </div>
             </div>
         </nav>
