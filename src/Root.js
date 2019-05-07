@@ -89,44 +89,41 @@ class Root extends Component {
     }
 
     componentWillMount() {
-        // console.debug({Rootcomponent:'componentWillMount'});
+        Helper.DEBUG({ name:'Root Component WILL MOUNT!', state: this.state})
     }
 
     componentDidMount() {
-        // console.debug({Rootcomponent:'componentDidMount'});
-        this.initializeLoginInfo();
+        Helper.DEBUG({ name:'Root Component DID MOUNT!', state: this.state})
     }
 
     componentWillReceiveProps(nextProps) {
-        // console.debug({Rootcomponent:'componentWillReceiveProps',nextProps:nextProps});
-
+        Helper.DEBUG({ name:'Root Component WILL RECIEVE PROPS!', nextProps: nextProps})
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        // console.debug({Rootcomponent:'shouldComponentUpdate',nextProps:nextProps, nextState:nextState});
-        return true / false;
-    }
+        Helper.DEBUG({ name:'Root ShouldComponentUpdate', nextProps: nextProps, nextState:nextState});
 
-    componentWillUpdate(nextProps, nextState) {
-        // console.debug({Rootcomponent:'componentWillUpdate',nextProps:nextProps,nextState:nextState});
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        // console.debug({Rootcomponent:'componentDidUpdate',prevProps:prevProps,prevState:prevState});
-        // console.debug({RootAppState:this.state});
-
-        const loginInfo = Helper.storageManager.get('logininfo') || null;
-        if(Helper.isEmpty(loginInfo) === false ) {
-            // console.debug({
-            //     user_uid: loginInfo.user_uid,
-            //     access_token: loginInfo.access_token
-            // });
-        }
+        return true;
     }
 
     componentWillUnmount() {
-        // console.debug({Rootcomponent:'componentWillUnmount'});
+        Helper.DEBUG({ name:'Root Component WILL UNMOUNT!' , state: this.state})
     }
+
+
+    componentWillUpdate(nextProps, nextState) {
+        Helper.DEBUG({ name:'Root Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        Helper.DEBUG({ name:'Root Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+    }
+
+    componentDidCatch(error, info) {
+        Helper.DEBUG({ name:'Root Component DID Catch!' , error: error, info: info})
+        //Handle error.
+    }
+
 
 
     render() {

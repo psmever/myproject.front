@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import { MainNav, Footer } from 'elements';
 import { HomeRootComponent } from './home/HomeRootComponent';
-// import * as Helper from 'lib/Helper';
+import * as Helper from 'lib/Helper';
 
 import {
     putGetHomeContentsList,
@@ -25,8 +25,6 @@ export class HomeComponent extends Component {
 
     componentWillMount() {
         // Helper.DEBUG({ name:'HomeComponent Component WILL MOUNT!', state: this.state});
-
-        // this._getHomeContentsList();
     }
 
     componentDidMount() {
@@ -48,6 +46,7 @@ export class HomeComponent extends Component {
 
     componentWillUnmount() {
         // Helper.DEBUG({ name:'HomeComponent Component WILL UNMOUNT!' , state: this.state})
+
     }
 
     componentWillUpdate(nextProps, nextState) {
