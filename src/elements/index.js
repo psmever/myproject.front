@@ -38,3 +38,7 @@ export { PhotoViewHead } from './photo/PhotoViewHead';
 
 
 export { DefaultPostList } from './post/DefaultPostList';
+
+export { HomeLeftLink } from './home/HomeLeftLink';
+export { HomeRightPeople } from './home/HomeRightPeople';
+export { HomeRightFriends } from './home/HomeRightFriends';

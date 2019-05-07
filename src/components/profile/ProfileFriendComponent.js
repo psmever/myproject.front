@@ -17,7 +17,9 @@ export class ProfileFriendComponent extends Component {
     render() {
         return (
             <div>
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={null}
+                />
 
                 {/* <!-- Begin page content --> */}
                 <FriendsRoot />

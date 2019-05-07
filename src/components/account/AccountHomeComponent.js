@@ -161,7 +161,9 @@ export class AccountHomeComponent extends Component {
         return (
             <div>
 
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={this.props.login.login_state}
+                />
                 {/* // <!-- Begin page content --> */}
                 <div className="container page-content edit-profile">
                     <div className="row">

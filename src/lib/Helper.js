@@ -127,10 +127,21 @@ export function httpHtml(content) {
  * 사용자 이미지 갖고 오기
  */
 export const getUserImageURL = () => {
-    const loginInfo = storageManager.get('logininfo') || null;
-
+    const loginInfo = storageManager.get('logininfo') || { login_state: false};
     if(isEmpty(loginInfo.login_state) === false && loginInfo.login_state === true) {
         return loginInfo.user_image_url
+    } else {
+        return Constants.globalConst.default_user_image
+    }
+}
+
+export const getLoginUserInfo = () => {
+    const loginInfo = storageManager.get('logininfo') || { login_state: false};
+
+    if(isEmpty(loginInfo.login_state) === false && loginInfo.login_state === true) {
+        return {
+            name: ''
+        }
     } else {
         return Constants.globalConst.default_user_image
     }

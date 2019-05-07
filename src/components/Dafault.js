@@ -15,7 +15,6 @@ export class Default extends Component {
 
     componentWillMount() {
         Helper.DEBUG({ name:'Component WILL MOUNT!', state: this.state})
-        this.pageStart();
     }
 
     componentDidMount() {
@@ -54,7 +53,9 @@ export class Default extends Component {
     render() {
         return (
             <div>
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={null}
+                />
 
 
 

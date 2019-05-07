@@ -216,12 +216,49 @@ function* fetchGetProfileTopInfo(action) {
 }
 
 
+function* fetchGetHomeContentsList() {
+    // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
+    try {
+        const getResult = yield API.getHomeContentsList();
+        if(getResult.status === true ) {
+            yield put({
+                type: ActionTypes.SUCCEEDED_GET_HOME_CONTENTS_LIST,
+                payload: {
+                    state: true,
+                    data: getResult.data
+                }
+            });
+        } else {
+            yield put({
+                type: ActionTypes.FAILED_GET_HOME_CONTENTS_LIST,
+                payload: {
+                    state: false,
+                    data: [],
+                    message: getResult.message
+                }
+            });
+        }
+
+    } catch (error) {
+        yield put({
+            type: ActionTypes.FAILED_GET_HOME_CONTENTS_LIST,
+            payload: {
+                state: false,
+                data: [],
+                message: error.data.message
+            }
+        });
+    }
+    // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
+}
+
 
 function* actionWatcher() {
 
     yield takeLatest(ActionTypes.INIT_LOGIN_DATA, fetchLoginData);
 
     yield takeLatest(ActionTypes.REQUEST_GET_SITE_BASIC_DATA, fetchGetSiteBasicData);
+    yield takeLatest(ActionTypes.REQUEST_GET_HOME_CONTENTS_LIST, fetchGetHomeContentsList);
 
     yield takeLatest(ActionTypes.REQUEST_TRY_LOGIN, fetchTryLogin);
     yield takeLatest(ActionTypes.INITIALT_TRY_LOGIN, initializeTryLoginData);

@@ -95,7 +95,23 @@ const ProfileReducer = (state = initialReduxState.profile, action) => {
 };
 
 
+const HomeReducer = (state = initialReduxState.home, action) => {
+    switch (action.type) {
+        case ActionTypes.REQUEST_GET_HOME_CONTENTS_LIST:
+            return { ...state};
+        case ActionTypes.SUCCEEDED_GET_HOME_CONTENTS_LIST:
+            return { ...state, contents_list: action.payload };
+        case ActionTypes.FAILED_GET_HOME_CONTENTS_LIST:
+            return { ...state, contents_list: action.payload};
+
+        default:
+            return state;
+    }
+};
+
+
 const RootReducer = combineReducers({
+    home: HomeReducer,
     profile: ProfileReducer,
     base: BaseReducer,
     auth: AuthReducer,

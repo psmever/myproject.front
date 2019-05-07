@@ -92,7 +92,10 @@ export class AccountPasswordComponent extends Component {
 
         return (
             <div>
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={this.props.login.login_state}
+                />
+
                 {/* // <!-- Begin page content --> */}
                 <div className="container page-content edit-profile">
                     <div className="row">
@@ -126,6 +129,7 @@ export class AccountPasswordComponent extends Component {
 
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
+    login: state.base.login,
 });
 
 const mapDispatchToProps = {

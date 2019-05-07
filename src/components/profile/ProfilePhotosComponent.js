@@ -71,7 +71,9 @@ export class ProfilePhotosComponent extends Component {
     render() {
         return (
             <div>
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={this.props.login.login_state}
+                />
 
                     <PhotosRoot
                         TOP_INFO = {this.props.profileTopData}
@@ -89,6 +91,7 @@ export class ProfilePhotosComponent extends Component {
 
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
+    login: state.base.login,
     profileTopData: state.profile.profile_top_info.data,
     photos_first_idx: state.profile.photos_list.data.first_idx,
     photos_list_list: state.profile.photos_list.data.list,

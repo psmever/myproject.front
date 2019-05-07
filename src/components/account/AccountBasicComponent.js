@@ -73,8 +73,10 @@ export class AccountHomeComponent extends Component {
             Helper.storageManager.set('logininfo', {
                 login_state: true,
                 user_uid: loginInfo.user_uid,
+                user_name: loginInfo.user_name,
                 access_token: loginInfo.access_token,
                 user_profile_set: true,
+                user_image_url: loginInfo.user_image_url,
             });
             this.props.history.push('/account/home');
         }
@@ -149,7 +151,9 @@ export class AccountHomeComponent extends Component {
 
         return (
             <div>
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={this.props.login.login_state}
+                />
                 {/* // <!-- Begin page content --> */}
                 <div className="container page-content edit-profile">
                     <div className="row">
@@ -207,7 +211,7 @@ AccountHomeComponent.defaultProps = {
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
     site_base_data: state.base.site_base_data,
-
+    login: state.base.login,
     basicData: state.account.user_basic_data,
     basicDataSave: state.account.user_basic_data_save_state,
 });
