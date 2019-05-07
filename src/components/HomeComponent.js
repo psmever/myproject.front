@@ -29,10 +29,13 @@ export class HomeComponent extends Component {
 
     componentDidMount() {
         // Helper.DEBUG({ name:'HomeComponent Component DID MOUNT!', state: this.state})
+        if(_.isEmpty(this.props.home_contents_first_idx)){
+            this._getHomeContentsList();
+        }
     }
 
     componentWillReceiveProps(nextProps) {
-        // Helper.DEBUG({ name:'HomeComponent Component WILL RECIEVE PROPS!', nextProps: nextProps})
+        Helper.DEBUG({ name:'HomeComponent Component WILL RECIEVE PROPS!', nextProps: nextProps})
 
         if(_.isEmpty(nextProps.home_contents_first_idx)){
             this._getHomeContentsList();
@@ -77,6 +80,7 @@ export class HomeComponent extends Component {
 
                 {/* <!-- Begin page content --> */}
                 <HomeRootComponent
+                    LOGIN_STATE={this.props.login.login_state}
                     LOGIN_INFO = {this.props.login_info}
                     USER_UID={this.props.user_uid}
                     HOME_CONTENTS_LIST = {this.props.home_contents_list}
@@ -95,7 +99,8 @@ const mapStateToProps = state => ({
     login_info: state.base.login,
     login: state.base.login,
     home_contents_list: state.home.contents_list.data.list,
-    home_contents_first_idx: state.home.contents_list.data.first_idx
+    home_contents_first_idx: state.home.contents_list.data.first_idx,
+    site_base_data: state.base.site_base_data
 });
 
 const mapDispatchToProps = {

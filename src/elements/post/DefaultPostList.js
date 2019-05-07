@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import _ from 'lodash';
 
 export const DefaultPostList = ({
+    LOGIN_STATE,
     USER_LOGIN_IMAGE_URL,
     POST_LIST,
     HANDLE_COMMENT_KEYPRESS,
@@ -10,6 +11,8 @@ export const DefaultPostList = ({
     HANDLE_ONCHANGE_COMMENT,
     COMMENT_CONTENTS
 }) => {
+
+
     return (
         <div>
             {
@@ -76,17 +79,29 @@ export const DefaultPostList = ({
                             }
                             </div>
 
-                            <div className="box-footer" style={{display: 'block'}}>
-                                <img className="img-responsive img-circle img-sm" src={USER_LOGIN_IMAGE_URL} alt="Alt Text"/>
-                                <div className="img-push">
-                                    <input type="text" className="form-control input-sm" placeholder="댓글을 입력해 주세요." name={(_.isUndefined(item.post_uuid) && _.isEmpty(item.post_uuid) ) ? '' :  item.post_uuid}
-                                        post_uuid={(_.isUndefined(item.post_uuid) && _.isEmpty(item.post_uuid) ) ? '' :  item.post_uuid}
-                                        onKeyPress = {_.isUndefined(HANDLE_COMMENT_KEYPRESS) ? null : HANDLE_COMMENT_KEYPRESS }
-                                        onChange= {_.isUndefined(HANDLE_ONCHANGE_COMMENT) ? null : HANDLE_ONCHANGE_COMMENT }
-                                        value={ (_.isUndefined(COMMENT_CONTENTS[item.post_uuid]) || _.isEmpty(COMMENT_CONTENTS[item.post_uuid]) ) ? '' : COMMENT_CONTENTS[item.post_uuid] }
-                                    />
-                                </div>
-                            </div>
+                            {
+                                LOGIN_STATE ? (
+                                    <div className="box-footer" style={{display: 'block'}}>
+                                        <img className="img-responsive img-circle img-sm" src={USER_LOGIN_IMAGE_URL} alt="Alt Text"/>
+                                        <div className="img-push">
+                                            <input type="text" className="form-control input-sm" placeholder="댓글을 입력해 주세요." name={(_.isUndefined(item.post_uuid) && _.isEmpty(item.post_uuid) ) ? '' :  item.post_uuid}
+                                                post_uuid={(_.isUndefined(item.post_uuid) && _.isEmpty(item.post_uuid) ) ? '' :  item.post_uuid}
+                                                onKeyPress = {_.isUndefined(HANDLE_COMMENT_KEYPRESS) ? null : HANDLE_COMMENT_KEYPRESS }
+                                                onChange= {_.isUndefined(HANDLE_ONCHANGE_COMMENT) ? null : HANDLE_ONCHANGE_COMMENT }
+                                                value={ (_.isUndefined(COMMENT_CONTENTS[item.post_uuid]) || _.isEmpty(COMMENT_CONTENTS[item.post_uuid]) ) ? '' : COMMENT_CONTENTS[item.post_uuid] }
+                                            />
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="box-footer" style={{display: 'block'}}>
+                                        <img className="img-responsive img-circle img-sm" src={null} alt="Alt Text"/>
+                                        <div className="img-push">
+                                            <input type="text" className="form-control input-sm" placeholder="댓글을 입력하려면 로그인을 해야 합니다." />
+                                        </div>
+                                    </div>
+                                )
+                            }
+
                         </div>
                     );
 

@@ -121,11 +121,19 @@ export class HomeRootComponent extends Component {
             <div className="container page-content ">
                 <div className="row">
                     {/* <!-- left links --> */}
-                    <HomeLeftLink
-                        LOGIN_STATE = {this.props.LOGIN_INFO.login_state}
-                        LOGIN_USER_IMAGE = {this.props.LOGIN_INFO.user_image_url}
-                        LOGIN_USER_NAME = {this.props.LOGIN_INFO.user_name}
-                    />
+                    {
+                        this.props.LOGIN_STATE ?
+                        (
+                            <HomeLeftLink
+                                LOGIN_STATE = {this.props.LOGIN_INFO.login_state}
+                                LOGIN_USER_IMAGE = {this.props.LOGIN_INFO.user_image_url}
+                                LOGIN_USER_NAME = {this.props.LOGIN_INFO.user_name}
+                            />
+                        ) : (
+                            null
+                        )
+                    }
+
                     {/* <!-- end left links --> */}
 
 
@@ -137,16 +145,24 @@ export class HomeRootComponent extends Component {
                                 <div className="row">
                                     <div className="col-md-12">
                                         {/* <!-- post state form --> */}
-                                        <TodayWriteForm
-                                            ONCHANGE_CONTENTS = {this._handleOnChangeTimeLineContents}
-                                            ONCHANGE_SELECT_IMAGE = {this._handleOnChangeTodayImage}
-                                            CONTENTS_VALUE = {this.state.today_contents}
-                                            ONCLICK_POST_BUTTON = {this._handleClickTimeLinePostButton}
-                                            SELECT_IMAGE_URL = {this.state.selectImageInfo.image_url}
-                                        />
+                                        {
+                                            this.props.LOGIN_STATE ?
+                                            (
+                                                <TodayWriteForm
+                                                    ONCHANGE_CONTENTS = {this._handleOnChangeTimeLineContents}
+                                                    ONCHANGE_SELECT_IMAGE = {this._handleOnChangeTodayImage}
+                                                    CONTENTS_VALUE = {this.state.today_contents}
+                                                    ONCLICK_POST_BUTTON = {this._handleClickTimeLinePostButton}
+                                                    SELECT_IMAGE_URL = {this.state.selectImageInfo.image_url}
+                                                />
+                                            ) : (
+                                                null
+                                            )
+                                        }
                                         {/* <!-- end post state form --> */}
 
                                         <DefaultPostList
+                                            LOGIN_STATE = {this.props.LOGIN_INFO.login_state}
                                             USER_LOGIN_IMAGE_URL = {user_image_url}
                                             POST_LIST = {this.props.HOME_CONTENTS_LIST}
                                             HANDLE_COMMENT_KEYPRESS = {this._handleCommentKeyPress}

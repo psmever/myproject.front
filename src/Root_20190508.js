@@ -5,9 +5,6 @@ import {
 } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-
-import _ from 'lodash';
-
 import {
     TestComponent,
     MainComponent,
@@ -31,44 +28,64 @@ import { initialtryLogin, putLoginData, putGetSiteBasicData } from 'store/Action
 
 import * as Helper from 'lib/Helper';
 
-
-const stateInitialize = {
-    pageState: false,
-    loginstate: false
-};
-
 class Root extends Component {
 
     constructor(props) {
 
         super(props);
 
-        this.state = stateInitialize;
-    }
+        this.state = {
+            loginstate: false
 
-    goLoginPage = () => {
-        const thisLocation = this.props.history.location.pathname;
-        if(thisLocation !== '/home' || thisLocation !== '/main') {
-            // this.props.history.push('/auth/login');
         }
     }
 
-    rootLoginCheck = () => {
-        Helper.DEBUG({name:'::rootLoginCheck::'});
+    initializeLoginInfo = async () => {
+        const { history, putLoginData, putGetSiteBasicData } = this.props;
         const thisLocation = this.props.history.location.pathname;
+
+        const loginInfo = Helper.storageManager.get('logininfo') || null;
+
         if (thisLocation !== '/auth/login' || thisLocation !== '/auth/register') {
 
-            const loginInfo = Helper.storageManager.get('logininfo') || null;
+            if( loginInfo === null ) {
+                history.push('/auth/login');
+            } else {
+                const { login_state, access_token, user_profile_set, user_uid, user_image_url, user_name } = loginInfo;
 
-            if(_.isEmpty(loginInfo)) {
-                this.goLoginPage();
-                return false;
+                await putLoginData({
+                        login_state: login_state,
+                        user_uid: user_uid,
+                        access_token: access_token,
+                        user_profile_set: user_profile_set,
+                        user_image_url: user_image_url,
+                        user_name: user_name
+                });
+
+                if( login_state === true ) {
+                    this.setState({
+                        loginstate: true
+                    });
+                    await putGetSiteBasicData();
+                }
+
+                if(login_state !== true) {
+                    history.push('/auth/login');
+                // } else if( user_profile_set === true) {
+                //     history.push('/profile/timeline');
+                // } else if( Helper.isEmpty(user_profile_set) === false) {
+                //     history.push('/account/home');
+                }
             }
         }
     }
 
-    baseInitialize = () => {
+    getSiteCodeList() {
+        const { putGetCodeList } = this.props;
 
+        if(this.state.loginstate === true && this.props.code_list.state === false) {
+            putGetCodeList();
+        }
     }
 
     componentWillMount() {
@@ -77,28 +94,12 @@ class Root extends Component {
 
     componentDidMount() {
         Helper.DEBUG({ name:'Root Component DID MOUNT!', state: this.state})
-        this.baseInitialize();
+
+        // this.initializeLoginInfo();
     }
 
     componentWillReceiveProps(nextProps) {
         Helper.DEBUG({ name:'Root Component WILL RECIEVE PROPS!', nextProps: nextProps})
-        const nowPathName = this.props.history.location.pathname;
-        if(
-            _.isEqual(nowPathName, '/account/login') ||
-            _.isEqual(nowPathName, '/account/register') ||
-            _.isEqual(nowPathName, '/home') ||
-            _.isEqual(nowPathName, '/main')
-        ) {
-            console.debug('login do not check');
-        } else {
-            console.debug('login do check');
-        }
-
-        if(nextProps.baseDataState === false) {
-            this.props.putGetSiteBasicData();
-            console.debug(1);
-        }
-
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -163,7 +164,7 @@ class Root extends Component {
 const mapStateToProps = state => ({
     login: state.base.login,
     loading: state.base.loading,
-    baseDataState: state.base.site_base_data.getState
+    code_list: state.base.code_list
 });
 
 const mapDispatchToProps = {
