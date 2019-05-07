@@ -92,8 +92,8 @@ export class PhotoViewRoot extends Component {
                                             PHOTO_REGIST_DATE_STRING = {this.props.PHOTO_INFO.regist_date_string}
                                             PHOTO_POST_IMAGE_URL = {this.props.PHOTO_INFO.upload_file_url}
                                             PHOTO_POST_CONTENTS = {this.props.PHOTO_INFO.timeline_content}
-                                            PHOTO_LIKE_COUNT = {this.props.PHOTO_INFO.like_count}
-                                            PHOTO_COMMENT_COUNT = {this.props.PHOTO_INFO.post_like_count}
+                                            PHOTO_LIKE_COUNT = {this.props.PHOTO_INFO.post_like_count}
+                                            PHOTO_COMMENT_COUNT = {this.props.PHOTO_INFO.post_comment_count}
                                             CLICK_LIKE_BUTTON = {this._handleClickLikeButton}
                                         >
                                         </PhotoViewInfo>
