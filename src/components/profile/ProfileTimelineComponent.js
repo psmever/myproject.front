@@ -77,7 +77,9 @@ export class ProfileTimelineComponent extends Component {
 
         return (
             <div>
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={this.props.login.login_state}
+                />
 
                     {/* <!-- Begin page content --> */}
                     <TimelineRoot
@@ -98,6 +100,7 @@ export class ProfileTimelineComponent extends Component {
 
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
+    login: state.base.login,
     profileTopData: state.profile.profile_top_info.data,
     timeline_first_idx: state.profile.timeline_list.data.first_idx,
     timeline_list: state.profile.timeline_list.data.list,

@@ -53,7 +53,9 @@ export class Default extends Component {
     render() {
         return (
             <div>
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={null}
+                />
 
 
 

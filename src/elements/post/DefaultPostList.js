@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import _ from 'lodash';
 
 export const DefaultPostList = ({
@@ -17,15 +18,25 @@ export const DefaultPostList = ({
                         <div className="box box-widget" key={item.idx}>
                             <div className="box-header with-border">
                                 <div className="user-block">
-                                    <img className="img-circle" src={item.profile_image_url} alt=""/>
-                                    <span className="username"><a href="#profile">{item.user_name}.</a></span>
+                                    <img className="img-circle" src={item.profile_image_url} alt="User_Image"/>
+                                    <span className="username">
+                                        <Link to={{
+                                                pathname: "/profile/timeline/"+item.user_name,
+                                            }}>{item.user_name}.
+                                        </Link>
+                                    </span>
                                     <span className="description">Shared publicly - {item.regist_date_string}</span>
                                 </div>
                             </div>
 
-                            <div className="box-body"
-                                style={{display: 'block'}}>
-                                <img className="img-responsive pad show-in-modal" src={item.upload_file_url} alt=""/>
+                            <div className="box-body" style={{display: 'block'}}>
+                                {
+                                    _.isEmpty(item.upload_file_url) === false ? (
+                                        <img className="img-responsive pad" src={item.upload_file_url} alt=""/>
+                                    ) : (
+                                        null
+                                    )
+                                }
                                 {
                                     item.timeline_content.split(/\r\n|\r|\n/).map((item, key) => {
                                         return (
@@ -33,11 +44,10 @@ export const DefaultPostList = ({
                                         )
                                     })
                                 }
-                                <button type="button" className="btn btn-default btn-xs"><i className="fa fa-share"></i> Share </button>
-                                <button type="button" className="btn btn-default btn-xs" post_uuid={item.post_uuid} onClick={HANDLE_ONCLICK_LIKEBUTTON}><i className="fa fa-thumbs-o-up"></i> Like </button>
+                                <button type="button" className="btn btn-default btn-xs"><i className="fa fa-share"></i> Share</button>
+                                <button type="button" className="btn btn-default btn-xs" post_uuid={item.post_uuid} onClick={HANDLE_ONCLICK_LIKEBUTTON}><i className="fa fa-thumbs-o-up"></i> Like</button>
                                 <span className="pull-right text-muted">{item.post_like_count} likes - {item.post_comment_count} comments</span>
                             </div>
-
                             <div className="box-footer box-comments" style={{display: 'block'}}>
                             {
                                 _.isEmpty(item.comment_list) === false ?
@@ -45,9 +55,12 @@ export const DefaultPostList = ({
                                     item.comment_list.map((commentItem) => {
                                         return (
                                             <div className="box-comment" key={commentItem.idx}>
-                                                <img className="img-circle img-sm" src={commentItem.user_image_url} alt=""/>
+                                                <img className="img-circle img-sm" src={commentItem.user_image_url} alt="User_Image"/>
                                                 <div className="comment-text">
-                                                    <span className="username"> {commentItem.user_name} <span className="text-muted pull-right">{commentItem.regist_date_string}</span> </span>
+                                                    <span className="username">
+                                                        {commentItem.user_name}
+                                                        <span className="text-muted pull-right">{commentItem.regist_date_string}</span>
+                                                    </span>
                                                     {commentItem.comment_content}
                                                 </div>
                                             </div>
@@ -57,7 +70,7 @@ export const DefaultPostList = ({
                                 :
                                 (
                                     <div className="box-comment">
-                                        댓글을 달아 주세요.
+                                                댓글을 달아 주세요.
                                     </div>
                                 )
                             }

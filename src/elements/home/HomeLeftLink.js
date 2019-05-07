@@ -10,7 +10,7 @@ export const HomeLeftLink = ({
         <div className="col-md-3">
             <div className="profile-nav">
                 {
-                    ( LOGIN_STATE == true ) ?
+                    ( LOGIN_STATE === true ) ?
                     (
                         <div className="widget">
                             <div className="widget-body">

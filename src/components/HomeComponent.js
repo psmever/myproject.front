@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import { MainNav, Footer } from 'elements';
 import { HomeRootComponent } from './home/HomeRootComponent';
-import * as Helper from 'lib/Helper';
+// import * as Helper from 'lib/Helper';
 
 import {
     putGetHomeContentsList,
@@ -24,17 +24,17 @@ export class HomeComponent extends Component {
     }
 
     componentWillMount() {
-        Helper.DEBUG({ name:'HomeComponent Component WILL MOUNT!', state: this.state});
+        // Helper.DEBUG({ name:'HomeComponent Component WILL MOUNT!', state: this.state});
 
         // this._getHomeContentsList();
     }
 
     componentDidMount() {
-        Helper.DEBUG({ name:'HomeComponent Component DID MOUNT!', state: this.state})
+        // Helper.DEBUG({ name:'HomeComponent Component DID MOUNT!', state: this.state})
     }
 
     componentWillReceiveProps(nextProps) {
-        Helper.DEBUG({ name:'HomeComponent Component WILL RECIEVE PROPS!', nextProps: nextProps})
+        // Helper.DEBUG({ name:'HomeComponent Component WILL RECIEVE PROPS!', nextProps: nextProps})
 
         if(_.isEmpty(nextProps.home_contents_first_idx)){
             this._getHomeContentsList();
@@ -42,26 +42,26 @@ export class HomeComponent extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        Helper.DEBUG({ name:'HomeComponent ShouldComponentUpdate', nextProps: nextProps, nextState:nextState});
+        // Helper.DEBUG({ name:'HomeComponent ShouldComponentUpdate', nextProps: nextProps, nextState:nextState});
         return true;
     }
 
     componentWillUnmount() {
-        Helper.DEBUG({ name:'HomeComponent Component WILL UNMOUNT!' , state: this.state})
+        // Helper.DEBUG({ name:'HomeComponent Component WILL UNMOUNT!' , state: this.state})
     }
 
     componentWillUpdate(nextProps, nextState) {
-        Helper.DEBUG({ name:'HomeComponent Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+        // Helper.DEBUG({ name:'HomeComponent Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
     }
 
     componentDidUpdate(prevProps, prevState) {
-        Helper.DEBUG({ name:'HomeComponent Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+        // Helper.DEBUG({ name:'HomeComponent Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
 
-        Helper.DEBUG({ name:'HomeComponent Contents List' , list: this.props.home_contents_list})
+        // Helper.DEBUG({ name:'HomeComponent Contents List' , list: this.props.home_contents_list})
     }
 
     componentDidCatch(error, info) {
-        Helper.DEBUG({ name:'HomeComponent Component DID Catch!' , error: error, info: info})
+        // Helper.DEBUG({ name:'HomeComponent Component DID Catch!' , error: error, info: info})
         //Handle error.
     }
 
@@ -72,7 +72,9 @@ export class HomeComponent extends Component {
     render() {
         return (
             <div>
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={this.props.login.login_state}
+                />
 
                 {/* <!-- Begin page content --> */}
                 <HomeRootComponent
@@ -92,6 +94,7 @@ export class HomeComponent extends Component {
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
     login_info: state.base.login,
+    login: state.base.login,
     home_contents_list: state.home.contents_list.data.list,
     home_contents_first_idx: state.home.contents_list.data.first_idx
 });

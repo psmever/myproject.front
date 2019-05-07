@@ -96,7 +96,9 @@ export class PhotoViewComponent extends Component {
     render() {
         return (
             <div>
-                <MainNav />
+                <MainNav
+                    LOGIN_STATE={this.props.login.login_state}
+                />
 
                 <PhotoViewRoot
                     POST_UUID = {this.state.post_uuid}
@@ -119,6 +121,7 @@ export class PhotoViewComponent extends Component {
 
 const mapStateToProps = state => ({
     user_uid: state.base.login.user_uid,
+    login: state.base.login,
 });
 
 const mapDispatchToProps = {
