@@ -38,3 +38,5 @@ export { PhotoViewHead } from './photo/PhotoViewHead';
 
 
 export { DefaultPostList } from './post/DefaultPostList';
+
+export { HomeLeftLink } from './home/HomeLeftLink';
