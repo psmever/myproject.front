@@ -124,3 +124,11 @@ export function postUserProfileTopInfo(user_uid) {
 export function getPhotoViewInfo(post_uuid) {
     return authAxios.get('/api/v1/post/photo/view/'+post_uuid);
 }
+
+
+/**
+ * 홈 리스트..
+ */
+export function getHomeContentsList() {
+    return authAxios.get('/api/v1/post/contents/list');
+}

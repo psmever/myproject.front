@@ -135,3 +135,15 @@ export const getUserImageURL = () => {
         return Constants.globalConst.default_user_image
     }
 }
+
+export const getLoginUserInfo = () => {
+    const loginInfo = storageManager.get('logininfo') || null;
+
+    if(isEmpty(loginInfo.login_state) === false && loginInfo.login_state === true) {
+        return {
+            name: ''
+        }
+    } else {
+        return Constants.globalConst.default_user_image
+    }
+}

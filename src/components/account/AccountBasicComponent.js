@@ -73,8 +73,10 @@ export class AccountHomeComponent extends Component {
             Helper.storageManager.set('logininfo', {
                 login_state: true,
                 user_uid: loginInfo.user_uid,
+                user_name: loginInfo.user_name,
                 access_token: loginInfo.access_token,
                 user_profile_set: true,
+                user_image_url: loginInfo.user_image_url,
             });
             this.props.history.push('/account/home');
         }

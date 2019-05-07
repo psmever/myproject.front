@@ -72,3 +72,11 @@ export const putGetProfilePhotosList = (user_uid) => ({
     type: ActionTypes.REQUEST_GET_PHOTOS_LIST,
     user_uid: user_uid
 });
+
+/**
+ *
+ * 홈 전체 post 리스트
+ */
+export const putGetHomeContentsList = () => ({
+    type: ActionTypes.REQUEST_GET_HOME_CONTENTS_LIST
+});

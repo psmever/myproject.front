@@ -1,6 +1,5 @@
 import React from "react";
 import _ from 'lodash';
-// import * as Helper from 'lib/Helper';
 
 export const DefaultPostList = ({
     USER_LOGIN_IMAGE_URL,
@@ -26,7 +25,7 @@ export const DefaultPostList = ({
 
                             <div className="box-body"
                                 style={{display: 'block'}}>
-                                <img className="img-responsive show-in-modal timeline-post-img-center" src={item.upload_file_url} alt=""/>
+                                <img className="img-responsive pad show-in-modal" src={item.upload_file_url} alt=""/>
                                 {
                                     item.timeline_content.split(/\r\n|\r|\n/).map((item, key) => {
                                         return (

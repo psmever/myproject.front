@@ -47,6 +47,7 @@ export class LoginComponent extends Component {
             Helper.storageManager.set('logininfo', {
                 login_state: true,
                 user_uid: loginResult.payload.data.user_uid,
+                user_name: loginResult.payload.data.user_name,
                 access_token: loginResult.payload.data.access_token,
                 user_profile_set: loginResult.payload.data.user_profile_state,
                 user_image_url: loginResult.payload.data.user_image_url,

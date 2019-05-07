@@ -42,4 +42,10 @@ export default {
             data: []
         },
     },
+    home: {
+        contents_list: {
+            state: false,
+            data: []
+        },
+    },
 };

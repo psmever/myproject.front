@@ -75,8 +75,11 @@ authAxios.interceptors.request.use( config => {
             const logininfo = Helper.storageManager.get('logininfo');
             const loginInfoData = {
                 login_state: true,
+                user_uid: logininfo.user_uid,
+                user_name: logininfo.user_name,
                 access_token: access_token,
-                user_profile_set: logininfo.user_profile_set
+                user_profile_set: logininfo.user_profile_state,
+                user_image_url: logininfo.user_image_url,
             }
             Helper.storageManager.set('logininfo', loginInfoData);
             config.headers.Authorization = access_token;

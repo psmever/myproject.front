@@ -35,6 +35,8 @@ export class MainNav extends Component {
     componentWillMount() {
         this.NavStart();
 
+        console.debug(this.state);
+
 
     }
 
@@ -57,11 +59,15 @@ export class MainNav extends Component {
                         <ul className="nav navbar-nav navbar-right">
                             <li><Link className="btn btn-default shiny" to="/home">홈</Link></li>
                             <li className="actives"><Link className="btn btn-default shiny" to="/profile/timeline">Profile</Link></li>
-                            <li>
-                                {
-                                    this.state.login_state ? ( <Link to="/auth/logout" className="btn btn-default shiny">로그아웃</Link> ) : ( <Link to="/auth/logout" className="btn btn-default shiny">로그아웃</Link> )
-                                }
-                            </li>
+                            {
+                                this.state.login_state ? (<li><Link to="/account/home" className="btn btn-default shiny">프로필수정</Link></li>) : ''
+                            }
+                            {
+                                this.state.login_state ? (<li><Link to="/auth/logout" className="btn btn-default shiny">로그아웃</Link></li>) : ''
+                            }
+                            {
+                                this.state.login_state === false ? (<li><Link to="/auth/login" className="btn btn-default shiny">로그인</Link></li>) : ''
+                            }
                         </ul>
                     </div>
                 </div>
