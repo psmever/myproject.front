@@ -5,6 +5,7 @@ import * as constants from 'lib/Constants';
 import * as ActionTypes from './ActionTypes';
 
 import * as API from 'lib/API';
+import * as Helper from 'lib/Helper';
 
 
 function* fetchLoginData(loginData) {
@@ -251,10 +252,57 @@ function* fetchGetHomeContentsList() {
     // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
 }
 
+/**
+ * 로그인 체크 사가
+ */
+function* fetchCheckLoginInfo() {
+
+    console.debug({name: 'login check saga'});
+
+    let loginInfo = {
+        login_state: false,
+        user_uid: null,
+        access_token: null,
+        user_profile_set: null,
+        user_image_url: null,
+        user_name: null,
+    };
+
+    try {
+        const storageLoginInfo = Helper.storageManager.get('logininfo') || null;
+        loginInfo = {
+                login_state: storageLoginInfo.login_state || false,
+                user_uid: storageLoginInfo.user_uid || null,
+                access_token: storageLoginInfo.access_token || null,
+                user_profile_set: storageLoginInfo.user_profile_set || null,
+                user_image_url: storageLoginInfo.user_image_url || null,
+                user_name: storageLoginInfo.user_name || null,
+            }
+
+        if(loginInfo.login_state === true) {
+            yield put({
+                type: ActionTypes.SUCCEEDED_CHECK_LOGIN_CHECK,
+                payload: loginInfo
+            });
+        } else {
+            yield put({
+                type: ActionTypes.FAILED_CHECK_LOGIN_CHECK,
+                payload: loginInfo
+            });
+        }
+
+    } catch (error) {
+        yield put({
+            type: ActionTypes.FAILED_CHECK_LOGIN_CHECK,
+            payload: loginInfo
+        });
+    }
+}
 
 function* actionWatcher() {
 
     yield takeLatest(ActionTypes.INIT_LOGIN_DATA, fetchLoginData);
+    yield takeLatest(ActionTypes.CHECK_LOGIN_CHECK, fetchCheckLoginInfo);
 
     yield takeLatest(ActionTypes.REQUEST_GET_SITE_BASIC_DATA, fetchGetSiteBasicData);
     yield takeLatest(ActionTypes.REQUEST_GET_HOME_CONTENTS_LIST, fetchGetHomeContentsList);

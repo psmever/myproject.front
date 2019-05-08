@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom"
 import { SingleNav, Footer } from 'elements';
-import { putShowLoadingAction, putHideLoadingAction } from 'store/Actions';
+import { putShowLoadingAction, putHideLoadingAction, putCheckLoginInfo } from 'store/Actions';
 
 import * as Helper from 'lib/Helper';
 
@@ -33,6 +33,7 @@ export class LogoutComponent extends Component {
         this._userLoginCheck();
 
         localStorage.clear();
+        this.props.putCheckLoginInfo();
 
         history.push('/auth/login');
 
@@ -76,7 +77,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     putShowLoadingAction,
-    putHideLoadingAction
+    putHideLoadingAction,
+    putCheckLoginInfo
 };
 
 export default withRouter(connect(
