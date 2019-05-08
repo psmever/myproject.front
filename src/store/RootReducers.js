@@ -24,6 +24,14 @@ const BaseReducer = (state = initialReduxState.base, action) => {
         case ActionTypes.FAILED_GET_SITE_BASIC_DATA:
             return { ...state, site_base_data : action.payload};
 
+        case ActionTypes.CHECK_LOGIN_CHECK:
+            return { ...state};
+        case ActionTypes.SUCCEEDED_CHECK_LOGIN_CHECK:
+            return { ...state, login : action.payload};
+        case ActionTypes.FAILED_CHECK_LOGIN_CHECK:
+            return { ...state, login : action.payload};
+
+
         default:
             return state;
     }

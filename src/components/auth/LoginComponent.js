@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom"
 import { SingleNav, Footer, LoginForm } from 'elements';
-import { putShowLoadingAction, putHideLoadingAction } from 'store/Actions';
+import { putShowLoadingAction, putHideLoadingAction, putCheckLoginInfo } from 'store/Actions';
 
 import * as Helper from 'lib/Helper';
 import Service from 'lib/Service';
@@ -52,6 +52,7 @@ export class LoginComponent extends Component {
                 user_profile_set: loginResult.payload.data.user_profile_state,
                 user_image_url: loginResult.payload.data.user_image_url,
             });
+            this.props.putCheckLoginInfo();
             Helper.globalAlert({text: loginResult.payload.message});
             history.push('/profile/timeline');
         } else {
@@ -134,7 +135,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     putShowLoadingAction,
-    putHideLoadingAction
+    putHideLoadingAction,
+    putCheckLoginInfo
 };
 
 export default withRouter(connect(

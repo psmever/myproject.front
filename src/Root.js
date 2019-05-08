@@ -27,7 +27,7 @@ import {
 
 import { GlobalLoading } from 'elements';
 
-import { initialtryLogin, putLoginData, putGetSiteBasicData } from 'store/Actions';
+import { initialtryLogin, putLoginData, putGetSiteBasicData, putCheckLoginInfo } from 'store/Actions';
 
 import * as Helper from 'lib/Helper';
 
@@ -92,6 +92,10 @@ class Root extends Component {
     componentDidMount() {
         Helper.DEBUG({ name:'Root Component DID MOUNT!', state: this.state})
         // this.rootLoginCheck();
+
+        console.debug(this.props.login);
+
+        this.props.putCheckLoginInfo();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -187,7 +191,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
     initialtryLogin,
     putLoginData,
-    putGetSiteBasicData
+    putGetSiteBasicData,
+    putCheckLoginInfo
 };
 
 export default withRouter(connect(

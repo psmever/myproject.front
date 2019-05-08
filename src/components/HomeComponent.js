@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import { MainNav, Footer } from 'elements';
 import { HomeRootComponent } from './home/HomeRootComponent';
-import * as Helper from 'lib/Helper';
+// import * as Helper from 'lib/Helper';
 
 import {
     putGetHomeContentsList,
