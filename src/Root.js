@@ -86,20 +86,17 @@ class Root extends Component {
     }
 
     componentWillMount() {
-        Helper.DEBUG({ name:'Root Component WILL MOUNT!', state: this.state})
+        // Helper.DEBUG({ name:'Root Component WILL MOUNT!', state: this.state})
     }
 
     componentDidMount() {
-        Helper.DEBUG({ name:'Root Component DID MOUNT!', state: this.state})
+        // Helper.DEBUG({ name:'Root Component DID MOUNT!', state: this.state})
         // this.rootLoginCheck();
-
-        console.debug(this.props.login);
-
         this.props.putCheckLoginInfo();
     }
 
     componentWillReceiveProps(nextProps) {
-        Helper.DEBUG({ name:'Root Component WILL RECIEVE PROPS!', nextProps: nextProps})
+        // Helper.DEBUG({ name:'Root Component WILL RECIEVE PROPS!', nextProps: nextProps})
 
         if(nextProps.baseDataState === false) {
             this.props.putGetSiteBasicData();
@@ -124,26 +121,26 @@ class Root extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        Helper.DEBUG({ name:'Root ShouldComponentUpdate', nextProps: nextProps, nextState:nextState});
+        // Helper.DEBUG({ name:'Root ShouldComponentUpdate', nextProps: nextProps, nextState:nextState});
         // this.rootLoginCheck();
         return true;
     }
 
     componentWillUnmount() {
-        Helper.DEBUG({ name:'Root Component WILL UNMOUNT!' , state: this.state})
+        // Helper.DEBUG({ name:'Root Component WILL UNMOUNT!' , state: this.state})
     }
 
 
     componentWillUpdate(nextProps, nextState) {
-        Helper.DEBUG({ name:'Root Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+        // Helper.DEBUG({ name:'Root Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
     }
 
     componentDidUpdate(prevProps, prevState) {
-        Helper.DEBUG({ name:'Root Component DID UPDATE!' , prevProps: prevProps, prevState:prevState, thisstate:this.state})
+        // Helper.DEBUG({ name:'Root Component DID UPDATE!' , prevProps: prevProps, prevState:prevState, thisstate:this.state})
     }
 
     componentDidCatch(error, info) {
-        Helper.DEBUG({ name:'Root Component DID Catch!' , error: error, info: info})
+        // Helper.DEBUG({ name:'Root Component DID Catch!' , error: error, info: info})
         //Handle error.
     }
 
