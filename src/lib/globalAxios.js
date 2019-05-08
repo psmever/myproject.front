@@ -104,10 +104,11 @@ authAxios.interceptors.response.use(function (response) {
     return response.data;
 }, function (error) {
     if(_.get(error, 'tokenNone')) {
-        Helper.globalErroraAlert({
-            title: '에러',
-            text: '로그인이 필요한 서비스 입니다.'
-        })
+        return {
+            status: false,
+            message: '로그인이 필요한 서비스 입니다.',
+        };
+
     } else {
         const { name, result, message } = error.response.data;
         return {
