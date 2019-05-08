@@ -51,11 +51,11 @@ export class HomeRootComponent extends Component {
             post_uuid: e.target.getAttribute('post_uuid')
         });
 
-        if(saveCommentLikeResult.status === false) {
-            Helper.globalAlert({text: saveCommentLikeResult.message})
-        } else {
-            this.props.GET_CONTENTS_LIST();
-        }
+        // if(saveCommentLikeResult.status === false) {
+        //     Helper.globalAlert({text: saveCommentLikeResult.message})
+        // } else {
+        //     this.props.GET_CONTENTS_LIST();
+        // }
 
     }
 
