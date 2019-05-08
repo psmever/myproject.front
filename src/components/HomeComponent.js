@@ -35,7 +35,7 @@ export class HomeComponent extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        Helper.DEBUG({ name:'HomeComponent Component WILL RECIEVE PROPS!', nextProps: nextProps})
+        // Helper.DEBUG({ name:'HomeComponent Component WILL RECIEVE PROPS!', nextProps: nextProps})
 
         if(_.isEmpty(nextProps.home_contents_first_idx)){
             this._getHomeContentsList();

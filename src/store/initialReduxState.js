@@ -7,9 +7,11 @@ export default {
         loading: false,
         login: {
             login_state: false,
-            user_uid: '',
+            user_uid: null,
             access_token: null,
-            user_profile_state: ''
+            user_profile_set: null,
+            user_image_url: null,
+            user_name: null
         },
         site_base_data: {
             getState: false,

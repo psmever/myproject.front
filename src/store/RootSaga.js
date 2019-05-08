@@ -178,7 +178,6 @@ function* fetchGetProfilePhotosList(action) {
     }
 }
 
-
 function* fetchGetProfileTopInfo(action) {
     // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
     try {

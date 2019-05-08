@@ -33,6 +33,7 @@ import * as Helper from 'lib/Helper';
 
 
 const stateInitialize = {
+    tryLoginCheck: false,
     pageState: false,
     loginstate: false
 };
@@ -47,24 +48,37 @@ class Root extends Component {
     }
 
     goLoginPage = () => {
-        const thisLocation = this.props.history.location.pathname;
-        if(thisLocation !== '/home' || thisLocation !== '/main') {
-            // this.props.history.push('/auth/login');
-        }
+        this.props.history.push('/auth/login');
     }
 
     rootLoginCheck = () => {
-        Helper.DEBUG({name:'::rootLoginCheck::'});
+
+        // console.debug({name: 'login check'});
+        // Helper.DEBUG({name:'::rootLoginCheck::'});
         const thisLocation = this.props.history.location.pathname;
+
         if (thisLocation !== '/auth/login' || thisLocation !== '/auth/register') {
 
             const loginInfo = Helper.storageManager.get('logininfo') || null;
 
-            if(_.isEmpty(loginInfo)) {
-                this.goLoginPage();
-                return false;
+            if(_.isEmpty(loginInfo) === false) {
+
+                const { login_state, access_token, user_profile_set, user_uid, user_image_url, user_name } = loginInfo;
+
+                this.props.putLoginData({
+                        login_state: login_state,
+                        user_uid: user_uid,
+                        access_token: access_token,
+                        user_profile_set: user_profile_set,
+                        user_image_url: user_image_url,
+                        user_name: user_name
+                });
             }
         }
+
+        this.setState({
+            tryLoginCheck: true,
+        });
     }
 
     baseInitialize = () => {
@@ -77,33 +91,37 @@ class Root extends Component {
 
     componentDidMount() {
         Helper.DEBUG({ name:'Root Component DID MOUNT!', state: this.state})
-        this.baseInitialize();
+        // this.rootLoginCheck();
     }
 
     componentWillReceiveProps(nextProps) {
         Helper.DEBUG({ name:'Root Component WILL RECIEVE PROPS!', nextProps: nextProps})
-        const nowPathName = this.props.history.location.pathname;
-        if(
-            _.isEqual(nowPathName, '/account/login') ||
-            _.isEqual(nowPathName, '/account/register') ||
-            _.isEqual(nowPathName, '/home') ||
-            _.isEqual(nowPathName, '/main')
-        ) {
-            console.debug('login do not check');
-        } else {
-            console.debug('login do check');
-        }
 
         if(nextProps.baseDataState === false) {
             this.props.putGetSiteBasicData();
-            console.debug(1);
         }
+
+        // const nowPathName = this.props.history.location.pathname;
+        // if(
+        //     _.isEqual(nowPathName, '/account/login') ||
+        //     _.isEqual(nowPathName, '/account/register') ||
+        //     _.isEqual(nowPathName, '/home') ||
+        //     _.isEqual(nowPathName, '/main')
+        // ) {
+        //     console.debug('login do not check');
+        // } else {
+        //     console.debug('login do check');
+        //     this.rootLoginCheck();
+        // }
+        // this.rootLoginCheck();
+
+
 
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         Helper.DEBUG({ name:'Root ShouldComponentUpdate', nextProps: nextProps, nextState:nextState});
-
+        // this.rootLoginCheck();
         return true;
     }
 
@@ -117,7 +135,7 @@ class Root extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        Helper.DEBUG({ name:'Root Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
+        Helper.DEBUG({ name:'Root Component DID UPDATE!' , prevProps: prevProps, prevState:prevState, thisstate:this.state})
     }
 
     componentDidCatch(error, info) {
