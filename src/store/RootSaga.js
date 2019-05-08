@@ -256,9 +256,6 @@ function* fetchGetHomeContentsList() {
  * 로그인 체크 사가
  */
 function* fetchCheckLoginInfo() {
-
-    console.debug({name: 'login check saga'});
-
     let loginInfo = {
         login_state: false,
         user_uid: null,
