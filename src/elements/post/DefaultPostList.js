@@ -94,9 +94,9 @@ export const DefaultPostList = ({
                                     </div>
                                 ) : (
                                     <div className="box-footer" style={{display: 'block'}}>
-                                        <img className="img-responsive img-circle img-sm" src={null} alt="Alt Text"/>
+                                        <img className="img-responsive img-circle img-sm" src={USER_LOGIN_IMAGE_URL} alt="Alt Text"/>
                                         <div className="img-push">
-                                            <input type="text" className="form-control input-sm" placeholder="댓글을 입력하려면 로그인을 해야 합니다." />
+                                            <input type="text" className="form-control input-sm" placeholder="댓글을 입력하려면 로그인을 해야 합니다." disabled={true}/>
                                         </div>
                                     </div>
                                 )

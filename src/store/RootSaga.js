@@ -1,7 +1,7 @@
 import { defaultAxios, authAxios } from 'lib/globalAxios'
 import { put, takeLatest, all } from 'redux-saga/effects';
 import * as constants from 'lib/Constants';
-
+// import _ from 'lodash';
 import * as ActionTypes from './ActionTypes';
 
 import * as API from 'lib/API';
@@ -264,17 +264,16 @@ function* fetchCheckLoginInfo() {
         user_image_url: null,
         user_name: null,
     };
-
     try {
         const storageLoginInfo = Helper.storageManager.get('logininfo') || null;
         loginInfo = {
-                login_state: storageLoginInfo.login_state || false,
-                user_uid: storageLoginInfo.user_uid || null,
-                access_token: storageLoginInfo.access_token || null,
-                user_profile_set: storageLoginInfo.user_profile_set || null,
-                user_image_url: storageLoginInfo.user_image_url || null,
-                user_name: storageLoginInfo.user_name || null,
-            }
+                login_state: ( storageLoginInfo && storageLoginInfo.login_state !== null ) ? storageLoginInfo.login_state : false,
+                user_uid: ( storageLoginInfo && storageLoginInfo.user_uid !== null ) ? storageLoginInfo.user_uid: null,
+                access_token: ( storageLoginInfo && storageLoginInfo.access_token !== null ) ? storageLoginInfo.access_token: null,
+                user_profile_set: ( storageLoginInfo && storageLoginInfo.user_profile_set !== null ) ? storageLoginInfo.user_profile_set: null,
+                user_image_url: ( storageLoginInfo && storageLoginInfo.user_image_url !== null ) ? storageLoginInfo.user_image_url: constants.globalConst.default_user_image,
+                user_name: ( storageLoginInfo && storageLoginInfo.user_name !== null ) ? storageLoginInfo.user_name: null,
+        }
 
         if(loginInfo.login_state === true) {
             yield put({

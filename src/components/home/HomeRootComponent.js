@@ -51,11 +51,11 @@ export class HomeRootComponent extends Component {
             post_uuid: e.target.getAttribute('post_uuid')
         });
 
-        // if(saveCommentLikeResult.status === false) {
-        //     Helper.globalAlert({text: saveCommentLikeResult.message})
-        // } else {
-        //     this.props.GET_CONTENTS_LIST();
-        // }
+        if(saveCommentLikeResult.status === false) {
+            Helper.globalAlert({text: saveCommentLikeResult.message})
+        } else {
+            this.props.GET_CONTENTS_LIST();
+        }
 
     }
 
@@ -121,18 +121,11 @@ export class HomeRootComponent extends Component {
             <div className="container page-content ">
                 <div className="row">
                     {/* <!-- left links --> */}
-                    {
-                        this.props.LOGIN_STATE ?
-                        (
-                            <HomeLeftLink
+                    <HomeLeftLink
                                 LOGIN_STATE = {this.props.LOGIN_INFO.login_state}
                                 LOGIN_USER_IMAGE = {this.props.LOGIN_INFO.user_image_url}
                                 LOGIN_USER_NAME = {this.props.LOGIN_INFO.user_name}
                             />
-                        ) : (
-                            null
-                        )
-                    }
 
                     {/* <!-- end left links --> */}
 

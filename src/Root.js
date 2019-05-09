@@ -6,7 +6,7 @@ import {
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import _ from 'lodash';
+// import _ from 'lodash';
 
 import {
     TestComponent,
@@ -29,7 +29,7 @@ import { GlobalLoading } from 'elements';
 
 import { initialtryLogin, putLoginData, putGetSiteBasicData, putCheckLoginInfo } from 'store/Actions';
 
-import * as Helper from 'lib/Helper';
+// import * as Helper from 'lib/Helper';
 
 
 const stateInitialize = {
@@ -49,36 +49,6 @@ class Root extends Component {
 
     goLoginPage = () => {
         this.props.history.push('/auth/login');
-    }
-
-    rootLoginCheck = () => {
-
-        // console.debug({name: 'login check'});
-        // Helper.DEBUG({name:'::rootLoginCheck::'});
-        const thisLocation = this.props.history.location.pathname;
-
-        if (thisLocation !== '/auth/login' || thisLocation !== '/auth/register') {
-
-            const loginInfo = Helper.storageManager.get('logininfo') || null;
-
-            if(_.isEmpty(loginInfo) === false) {
-
-                const { login_state, access_token, user_profile_set, user_uid, user_image_url, user_name } = loginInfo;
-
-                this.props.putLoginData({
-                        login_state: login_state,
-                        user_uid: user_uid,
-                        access_token: access_token,
-                        user_profile_set: user_profile_set,
-                        user_image_url: user_image_url,
-                        user_name: user_name
-                });
-            }
-        }
-
-        this.setState({
-            tryLoginCheck: true,
-        });
     }
 
     baseInitialize = () => {

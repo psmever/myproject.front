@@ -10,6 +10,7 @@ import {
     putHideLoadingAction,
     putGetProfileTimeList,
     putGetProfileTopInfo,
+    putCheckLoginInfo,
 } from 'store/Actions'
 
 export class ProfileTimelineComponent extends Component {
@@ -26,17 +27,14 @@ export class ProfileTimelineComponent extends Component {
     }
 
     componentWillMount() {
-        // Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL MOUNT!', state: this.state})
-        // this._getTimeLineList();
+        this._getTimeLineList();
     }
 
     componentDidMount() {
-        // Helper.DEBUG({ name:'ProfileTimelineComponent Component DID MOUNT!', state: this.state, props: this.props})
+        this.props.putCheckLoginInfo();
     }
 
     componentWillReceiveProps(nextProps) {
-        // Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL RECIEVE PROPS!', nextProps: nextProps, nowProps: this.props})
-
         if(nextProps.user_uid !== this.props.user_uid) {
             this._getProfileTopInfo(nextProps.user_uid);
             this._getTimeLineList(nextProps.user_uid);
@@ -44,24 +42,20 @@ export class ProfileTimelineComponent extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        // Helper.DEBUG({ name:'ProfileTimelineComponent shouldComponentUpdate', nextProps: nextProps, nextState:nextState});
-
         const updateState = true;
-
         return updateState;
     }
 
     componentWillUnmount() {
-        // Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL UNMOUNT!' , state: this.state, props: this.props})
+
     }
 
 
     componentWillUpdate(nextProps, nextState) {
-        // Helper.DEBUG({ name:'ProfileTimelineComponent Component WILL UPDATE!' , nextProps: nextProps, nextState:nextState})
+
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // Helper.DEBUG({ name:'ProfileTimelineComponent Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
     }
 
     _getTimeLineList = async (user_uid) => {
@@ -110,7 +104,8 @@ const mapDispatchToProps = {
     putShowLoadingAction,
     putHideLoadingAction,
     putGetProfileTimeList,
-    putGetProfileTopInfo
+    putGetProfileTopInfo,
+    putCheckLoginInfo
 };
 
 export default withRouter(connect(

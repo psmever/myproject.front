@@ -37,6 +37,20 @@ export const HomeLeftLink = ({
                     (
                         <div className="widget">
                             <div className="widget-body">
+                            <div className="user-heading round">
+                                    <Link to="/auth/login"> <img src={LOGIN_USER_IMAGE} alt=""/> </Link>
+                                </div>
+                                <ul className="nav nav-pills nav-stacked">
+                                    {/* <li className="active"><Link to="/profile/photos"><i className="fa fa-user"></i> Photos</Link></li> */}
+                                    {/* <li className="active"><a href="/resource"> <i className="fa fa-user"></i> News feed</a></li>
+                                    <li>
+                                        <a href="/resource"> <i className="fa fa-envelope"></i> Messages <span className="label label-info pull-right r-activity">9</span> </a>
+                                    </li>
+                                    <li><a href="/resource"> <i className="fa fa-calendar"></i> Events</a></li>
+                                    <li><a href="/resource"> <i className="fa fa-image"></i> Photos</a></li>
+                                    <li><a href="/resource"> <i className="fa fa-share"></i> Browse</a></li>
+                                    <li><a href="/resource"> <i className="fa fa-floppy-o"></i> Saved</a></li> */}
+                                </ul>
                             </div>
                         </div>
                     )
