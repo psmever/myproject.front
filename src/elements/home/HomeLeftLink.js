@@ -15,7 +15,7 @@ export const HomeLeftLink = ({
                         <div className="widget">
                             <div className="widget-body">
                             <div className="user-heading round">
-                                    <a href="/resource"> <img src={LOGIN_USER_IMAGE} alt=""/> </a>
+                                    <Link to="/profile/timeline"> <img src={LOGIN_USER_IMAGE} alt=""/> </Link>
                                     <h1>{LOGIN_USER_NAME}.</h1>
                                     <p>@{LOGIN_USER_NAME}</p>
                                 </div>

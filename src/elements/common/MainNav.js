@@ -32,7 +32,9 @@ export class MainNav extends Component {
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav navbar-right">
                             <li><Link className="btn btn-default shiny" to={{ pathname: '/home', state: 'flushDeal' }}>홈</Link></li>
-                            <li className="actives"><Link className="btn btn-default shiny" to="/profile/timeline">Profile</Link></li>
+                            {
+                                this.props.LOGIN_STATE ? (<li className="actives"><Link className="btn btn-default shiny" to="/profile/timeline">Profile</Link></li>) : ''
+                            }
                             {
                                 this.props.LOGIN_STATE ? (<li><Link to="/account/home" className="btn btn-default shiny">프로필수정</Link></li>) : ''
                             }
