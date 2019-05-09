@@ -1,10 +1,11 @@
 import { defaultAxios, authAxios } from 'lib/globalAxios'
 import { put, takeLatest, all } from 'redux-saga/effects';
 import * as constants from 'lib/Constants';
-
+// import _ from 'lodash';
 import * as ActionTypes from './ActionTypes';
 
 import * as API from 'lib/API';
+import * as Helper from 'lib/Helper';
 
 
 function* fetchLoginData(loginData) {
@@ -178,7 +179,6 @@ function* fetchGetProfilePhotosList(action) {
     }
 }
 
-
 function* fetchGetProfileTopInfo(action) {
     // yield put({ type: ActionTypes.SHOW_LOADING_ACTION});
     try {
@@ -252,10 +252,53 @@ function* fetchGetHomeContentsList() {
     // yield put({ type: ActionTypes.HIDE_LOADING_ACTION});
 }
 
+/**
+ * 로그인 체크 사가
+ */
+function* fetchCheckLoginInfo() {
+    let loginInfo = {
+        login_state: false,
+        user_uid: null,
+        access_token: null,
+        user_profile_set: null,
+        user_image_url: null,
+        user_name: null,
+    };
+    try {
+        const storageLoginInfo = Helper.storageManager.get('logininfo') || null;
+        loginInfo = {
+                login_state: ( storageLoginInfo && storageLoginInfo.login_state !== null ) ? storageLoginInfo.login_state : false,
+                user_uid: ( storageLoginInfo && storageLoginInfo.user_uid !== null ) ? storageLoginInfo.user_uid: null,
+                access_token: ( storageLoginInfo && storageLoginInfo.access_token !== null ) ? storageLoginInfo.access_token: null,
+                user_profile_set: ( storageLoginInfo && storageLoginInfo.user_profile_set !== null ) ? storageLoginInfo.user_profile_set: null,
+                user_image_url: ( storageLoginInfo && storageLoginInfo.user_image_url !== null ) ? storageLoginInfo.user_image_url: constants.globalConst.default_user_image,
+                user_name: ( storageLoginInfo && storageLoginInfo.user_name !== null ) ? storageLoginInfo.user_name: null,
+        }
+
+        if(loginInfo.login_state === true) {
+            yield put({
+                type: ActionTypes.SUCCEEDED_CHECK_LOGIN_CHECK,
+                payload: loginInfo
+            });
+        } else {
+            yield put({
+                type: ActionTypes.FAILED_CHECK_LOGIN_CHECK,
+                payload: loginInfo
+            });
+        }
+
+    } catch (error) {
+        yield put({
+            type: ActionTypes.FAILED_CHECK_LOGIN_CHECK,
+            payload: loginInfo
+        });
+    }
+}
 
 function* actionWatcher() {
 
     yield takeLatest(ActionTypes.INIT_LOGIN_DATA, fetchLoginData);
+    yield takeLatest(ActionTypes.CHECK_LOGIN_CHECK, fetchCheckLoginInfo);
 
     yield takeLatest(ActionTypes.REQUEST_GET_SITE_BASIC_DATA, fetchGetSiteBasicData);
     yield takeLatest(ActionTypes.REQUEST_GET_HOME_CONTENTS_LIST, fetchGetHomeContentsList);

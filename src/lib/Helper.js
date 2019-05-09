@@ -137,7 +137,6 @@ export const getUserImageURL = () => {
 
 export const getLoginUserInfo = () => {
     const loginInfo = storageManager.get('logininfo') || { login_state: false};
-
     if(isEmpty(loginInfo.login_state) === false && loginInfo.login_state === true) {
         return {
             name: ''

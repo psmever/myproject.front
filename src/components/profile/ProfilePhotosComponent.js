@@ -6,7 +6,8 @@ import {
     putShowLoadingAction,
     putHideLoadingAction,
     putGetProfileTopInfo,
-    putGetProfilePhotosList
+    putGetProfilePhotosList,
+    putCheckLoginInfo
 } from 'store/Actions'
 import { PhotosRoot } from './photos/PhotosRoot';
 
@@ -26,10 +27,13 @@ export class ProfilePhotosComponent extends Component {
 
     componentWillMount() {
         // Helper.DEBUG({ name:'ProfilePhotoComponent Component WILL MOUNT!', state: this.state, props: this.props})
+        this._getProfileTopInfo(this.props.user_uid);
+        this._getPhotosList(this.props.user_uid);
     }
 
     componentDidMount() {
         // Helper.DEBUG({ name:'ProfilePhotoComponent Component DID MOUNT!', state: this.state})
+        this.props.putCheckLoginInfo();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -102,6 +106,7 @@ const mapDispatchToProps = {
     putHideLoadingAction,
     putGetProfileTopInfo,
     putGetProfilePhotosList,
+    putCheckLoginInfo,
 };
 
 export default withRouter(connect(

@@ -1,7 +1,7 @@
-import { authAxios } from 'lib/globalAxios'
+import { authAxios, defaultAxios } from 'lib/globalAxios'
 
 export function getSiteBasicData() {
-    return authAxios.get('/api/v1/system/basic/data');
+    return defaultAxios.get('/api/v1/system/basic/data');
 }
 
 export function getUserProfileHomeData(user_uid) {
@@ -130,5 +130,5 @@ export function getPhotoViewInfo(post_uuid) {
  * 홈 리스트..
  */
 export function getHomeContentsList() {
-    return authAxios.get('/api/v1/post/contents/list');
+    return defaultAxios.get('/api/v1/post/contents/list');
 }

@@ -25,12 +25,13 @@ export class HomeComponent extends Component {
 
     componentWillMount() {
         // Helper.DEBUG({ name:'HomeComponent Component WILL MOUNT!', state: this.state});
-
-        // this._getHomeContentsList();
     }
 
     componentDidMount() {
         // Helper.DEBUG({ name:'HomeComponent Component DID MOUNT!', state: this.state})
+        if(_.isEmpty(this.props.home_contents_first_idx)){
+            this._getHomeContentsList();
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -48,6 +49,7 @@ export class HomeComponent extends Component {
 
     componentWillUnmount() {
         // Helper.DEBUG({ name:'HomeComponent Component WILL UNMOUNT!' , state: this.state})
+
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -56,8 +58,6 @@ export class HomeComponent extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         // Helper.DEBUG({ name:'HomeComponent Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
-
-        // Helper.DEBUG({ name:'HomeComponent Contents List' , list: this.props.home_contents_list})
     }
 
     componentDidCatch(error, info) {
@@ -78,6 +78,7 @@ export class HomeComponent extends Component {
 
                 {/* <!-- Begin page content --> */}
                 <HomeRootComponent
+                    LOGIN_STATE={this.props.login.login_state}
                     LOGIN_INFO = {this.props.login_info}
                     USER_UID={this.props.user_uid}
                     HOME_CONTENTS_LIST = {this.props.home_contents_list}
@@ -96,7 +97,8 @@ const mapStateToProps = state => ({
     login_info: state.base.login,
     login: state.base.login,
     home_contents_list: state.home.contents_list.data.list,
-    home_contents_first_idx: state.home.contents_list.data.first_idx
+    home_contents_first_idx: state.home.contents_list.data.first_idx,
+    site_base_data: state.base.site_base_data
 });
 
 const mapDispatchToProps = {
