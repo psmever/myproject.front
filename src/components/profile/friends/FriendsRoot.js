@@ -23,7 +23,7 @@ export class FriendsRoot extends Component {
                     <div className="col-md-10 col-md-offset-1">
                         <div className="row">
 
-                            <ProfileTop />
+                            <ProfileTop TOP_INFO = {this.props.TOP_INFO} />
 
                         </div>
                         <div className="row">

@@ -27,6 +27,8 @@ export class ProfilePhotosComponent extends Component {
 
     componentWillMount() {
         // Helper.DEBUG({ name:'ProfilePhotoComponent Component WILL MOUNT!', state: this.state, props: this.props})
+        this._getProfileTopInfo(this.props.user_uid);
+        this._getPhotosList(this.props.user_uid);
     }
 
     componentDidMount() {

@@ -58,8 +58,6 @@ export class HomeComponent extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         // Helper.DEBUG({ name:'HomeComponent Component DID UPDATE!' , prevProps: prevProps, prevState:prevState})
-
-        // Helper.DEBUG({ name:'HomeComponent Contents List' , list: this.props.home_contents_list})
     }
 
     componentDidCatch(error, info) {

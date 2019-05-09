@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { MainNav, Footer } from 'elements';
 import { TimelineRoot } from './timeline/TimelineRoot';
-// import * as Helper from 'lib/Helper';
+import * as Helper from 'lib/Helper';
 
 import {
     putShowLoadingAction,
@@ -27,14 +27,19 @@ export class ProfileTimelineComponent extends Component {
     }
 
     componentWillMount() {
-        this._getTimeLineList();
+        Helper.DEBUG({ name:'ProfileTimelineComponent componentWillMount', props: this.props})
+        this._getProfileTopInfo(this.props.user_uid);
+        this._getTimeLineList(this.props.user_uid);
+
     }
 
     componentDidMount() {
+        Helper.DEBUG({ name:'ProfileTimelineComponent componentDidMount', props: this.props})
         this.props.putCheckLoginInfo();
     }
 
     componentWillReceiveProps(nextProps) {
+        Helper.DEBUG({ name:'ProfileTimelineComponent componentWillReceiveProps', nextProps: nextProps})
         if(nextProps.user_uid !== this.props.user_uid) {
             this._getProfileTopInfo(nextProps.user_uid);
             this._getTimeLineList(nextProps.user_uid);
@@ -42,28 +47,36 @@ export class ProfileTimelineComponent extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
+        Helper.DEBUG({ name:'ProfileTimelineComponent shouldComponentUpdate', nextProps: nextProps, nextState: nextState})
         const updateState = true;
         return updateState;
     }
 
     componentWillUnmount() {
-
+        Helper.DEBUG({ name:'ProfileTimelineComponent componentWillUnmount'})
     }
 
 
     componentWillUpdate(nextProps, nextState) {
+        Helper.DEBUG({ name:'ProfileTimelineComponent componentWillUpdate', nextProps: nextProps, nextState: nextState})
 
     }
 
     componentDidUpdate(prevProps, prevState) {
+        Helper.DEBUG({ name:'ProfileTimelineComponent componentDidUpdate', prevProps: prevProps, prevState: prevState})
     }
 
     _getTimeLineList = async (user_uid) => {
-        this.props.putGetProfileTimeList(user_uid);
+        if(user_uid) {
+            this.props.putGetProfileTimeList(user_uid);
+        }
+
     }
 
     _getProfileTopInfo = async (user_uid) => {
-        this.props.putGetProfileTopInfo(user_uid);
+        if(user_uid) {
+            this.props.putGetProfileTopInfo(user_uid);
+        }
     }
 
     render() {

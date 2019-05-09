@@ -24,6 +24,9 @@ export class ProfileFriendComponent extends Component {
         }
     }
 
+    componentWillMount() {
+        this._getProfileTopInfo(this.props.user_uid);
+    }
 
     componentDidMount() {
         this.props.putCheckLoginInfo();
@@ -40,6 +43,7 @@ export class ProfileFriendComponent extends Component {
     }
 
     render() {
+        const { profileTopData } = this.props;
         return (
             <div>
                 <MainNav
@@ -47,7 +51,9 @@ export class ProfileFriendComponent extends Component {
                 />
 
                 {/* <!-- Begin page content --> */}
-                <FriendsRoot />
+                <FriendsRoot
+                    TOP_INFO = {profileTopData}
+                />
                 {/* <!-- End page content --> */}
 
                 <Footer />
