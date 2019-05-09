@@ -5,11 +5,11 @@ class Service {
     constructor(config) {
 
         let axiosInstance = axios.create({
-            baseURL: 'http://psmever.dlinkddns.com:4040/service',
-            timeout: 20000,
+            baseURL: process.env.REACT_APP_API_URL,
+            timeout: process.env.REACT_APP_API_TIMEOUT,
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                'Client-Type': 'C01010'
+                'Client-Type': process.env.REACT_APP_CLIENT_TYPE
             }
         });
 

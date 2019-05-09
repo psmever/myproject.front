@@ -1,7 +1,5 @@
-const default_base_url = 'http://psmever.dlinkddns.com:4040';
-
 export const globalConst = {
-    default_user_image : default_base_url+'/resource/img/default_profile.png'
+    default_user_image : process.env.REACT_APP_BASE_URL+'/resource/img/default_profile.png'
 }
 
 

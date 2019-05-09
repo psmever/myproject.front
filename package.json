@@ -21,7 +21,9 @@
   },
   "scripts": {
     "start": "cp ../config/env.development.local .env && PORT=4000 react-scripts start",
-    "build": "react-scripts build",
+    "start:prod": "cp ../config/env.production.local .env && PORT=4000 react-scripts start",
+    "build": "cp ../config/env.production.local .env && react-scripts build",
+    "build:dev": "cp ../config/env.development.local .env && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

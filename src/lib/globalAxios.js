@@ -5,16 +5,7 @@ import _ from 'lodash';
 // const CancelToken = axios.CancelToken;
 
 const defaultAPIURL = (() => {
-  if (process.env.NODE_ENV === 'development') {
-      return 'http://psmever.dlinkddns.com:4040/service';
-  }
-
-  if (process.env.APP_ENV === 'server' && process.env.LOCAL === 'true') {
-    return 'http://psmever.dlinkddns.com:4040/service';
-  }
-
-  return 'http://psmever.dlinkddns.com:4040/service';
-
+    return process.env.REACT_APP_API_URL
 })();
 
 const refreshToken = async () => {
@@ -35,10 +26,10 @@ const refreshToken = async () => {
 
 export const defaultAxios = axios.create({
     baseURL: defaultAPIURL,
-    // timeout: 20000,
+    timeout: process.env.REACT_APP_API_TIMEOUT,
     headers: {
         'Content-Type': 'application/json;charset=UTF-8',
-        'Client-Type': 'C01010'
+        'Client-Type': process.env.REACT_APP_CLIENT_TYPE
     }
 });
 
@@ -62,10 +53,10 @@ defaultAxios.interceptors.response.use(function (response) {
 
 export const authAxios = axios.create({
     baseURL: defaultAPIURL,
-    // timeout: 20000,
+    timeout: process.env.REACT_APP_API_TIMEOUT,
     headers: {
         'Content-Type': 'application/json;charset=UTF-8;multipart/form-data',
-        'Client-Type': 'C01010'
+        'Client-Type': process.env.REACT_APP_CLIENT_TYPE
     }
 });
 

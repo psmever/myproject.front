@@ -29,7 +29,7 @@ import { GlobalLoading } from 'elements';
 
 import { initialtryLogin, putLoginData, putGetSiteBasicData, putCheckLoginInfo } from 'store/Actions';
 
-// import * as Helper from 'lib/Helper';
+import * as Helper from 'lib/Helper';
 
 
 const stateInitialize = {
@@ -60,6 +60,7 @@ class Root extends Component {
     }
 
     componentDidMount() {
+        Helper.DEBUG({ name:'process.env', env: process.env})
         // Helper.DEBUG({ name:'Root Component DID MOUNT!', state: this.state})
         // this.rootLoginCheck();
         this.props.putCheckLoginInfo();

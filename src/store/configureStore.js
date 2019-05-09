@@ -4,7 +4,14 @@ import { logger } from 'redux-logger';
 import RootReducers from './RootReducers'
 import RootSaga from './RootSaga';
 
-let dev = true;
+let dev;
+let store;
+
+if(process.env.REACT_APP_BUILD_VERSION === 'production' || process.env.NODE_ENV === 'production') {
+    dev = false;
+} else {
+    dev = true;
+}
 
 const composeEnhancers = !dev ? (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose) : compose
 
@@ -12,7 +19,6 @@ export default function configureStore() {
     const initialState = typeof window === 'undefined' ? undefined : window.__REDUX_STATE__;
     const sagaMiddleware = createSagaMiddleware()
 
-    let store;
     if(dev === false) {
         store = createStore(RootReducers, initialState, composeEnhancers(applyMiddleware(sagaMiddleware)))
     } else {

@@ -71,7 +71,9 @@ export const isEmpty = function(value) {
 */
 
 export const DEBUG = (e) => {
-    console.debug('%c::DEBUG::', 'color: green; font-weight: bold;',e);
+    if(process.env.REACT_APP_BUILD_VERSION === 'development' || process.env.NODE_ENV === 'development') {
+        console.debug('%c::DEBUG::', 'color: green; font-weight: bold;',e);
+    }
 };
 
 export const DEBUG2 = (e) => {
