@@ -3,6 +3,7 @@ import initialReduxState from './initialReduxState';
 import * as Helper from 'lib/Helper';
 
 import * as ActionTypes from './ActionTypes';
+import { merge } from 'lodash/object'
 
 const BaseReducer = (state = initialReduxState.base, action) => {
     switch (action.type) {
@@ -108,7 +109,13 @@ const HomeReducer = (state = initialReduxState.home, action) => {
         case ActionTypes.REQUEST_GET_HOME_CONTENTS_LIST:
             return { ...state};
         case ActionTypes.SUCCEEDED_GET_HOME_CONTENTS_LIST:
-            return { ...state, contents_list: action.payload };
+            return merge({}, state, {
+                contents_list : {
+                    state: true,
+                    last_idx: action.payload.data.last_idx,
+                    list: action.payload.data.list
+                }
+            });
         case ActionTypes.FAILED_GET_HOME_CONTENTS_LIST:
             return { ...state, contents_list: action.payload};
 

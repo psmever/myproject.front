@@ -81,6 +81,10 @@ export const putGetHomeContentsList = () => ({
     type: ActionTypes.REQUEST_GET_HOME_CONTENTS_LIST
 });
 
+export const putGetMoreHomeContentsList = () => ({
+    type: ActionTypes.REQUEST_GET_MORE_HOME_CONTENTS_LIST
+});
+
 /**
  * 로그인 체크 액션
  */

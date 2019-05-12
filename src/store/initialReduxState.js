@@ -47,7 +47,8 @@ export default {
     home: {
         contents_list: {
             state: false,
-            data: []
+            last_idx: '',
+            list: []
         },
     },
 };
