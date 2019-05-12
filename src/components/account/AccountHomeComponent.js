@@ -81,22 +81,11 @@ export class AccountHomeComponent extends Component {
     }
 
     componentWillMount() {
-        // console.debug({Appcomponent:'componentWillMount'});
         this.pageStart();
 
     }
 
-    componentWillUnmount() {
-        console.debug('componentWillUnmount');
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        console.debug({nextProps:nextProps, nextState:nextState});
-        return true / false;
-    }
-
     componentDidMount() {
-        // console.debug({Appcomponent:'componentDidMount'});
         this._getUserProfileHomeData();
 
     }

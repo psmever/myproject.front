@@ -80,10 +80,6 @@ export class AccountPasswordComponent extends Component {
         this.pageStart();
     }
 
-    componentDidUpdate(){
-        console.debug(this.state.formData);
-    }
-
     render() {
         const {
             _handleOnChangeItem,
