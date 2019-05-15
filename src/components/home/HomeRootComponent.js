@@ -3,6 +3,8 @@ import { HomeLeftLink, HomeRightPeople, HomeRightFriends, DefaultPostList, Today
 import * as Helper from 'lib/Helper';
 import * as API from 'lib/API';
 
+
+
 const initialState = {
     commentState: {},
     today_contents: '',

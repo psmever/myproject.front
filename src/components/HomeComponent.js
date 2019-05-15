@@ -9,7 +9,7 @@ import { HomeRootComponent } from './home/HomeRootComponent';
 import {
     putGetHomeContentsList,
 } from 'store/Actions'
-
+import PullRefresh from 'react-pullrefresh'
 
 export class HomeComponent extends Component {
 
@@ -38,23 +38,27 @@ export class HomeComponent extends Component {
         this.props.putGetHomeContentsList();
     }
 
+    onRefresh = () => {
+        this.props.putGetHomeContentsList();
+    }
+
     render() {
         return (
             <div>
                 <MainNav
                     LOGIN_STATE={this.props.login.login_state}
                 />
-
-                {/* <!-- Begin page content --> */}
-                <HomeRootComponent
-                    LOGIN_STATE={this.props.login.login_state}
-                    LOGIN_INFO = {this.props.login_info}
-                    USER_UID={this.props.user_uid}
-                    HOME_CONTENTS_LIST = {this.props.home_contents_list}
-                    GET_CONTENTS_LIST = {this._getHomeContentsList}
-                />
-                {/* <!-- End page content --> */}
-
+                    <PullRefresh onRefresh={this.onRefresh}>
+                        {/* <!-- Begin page content --> */}
+                        <HomeRootComponent
+                            LOGIN_STATE={this.props.login.login_state}
+                            LOGIN_INFO = {this.props.login_info}
+                            USER_UID={this.props.user_uid}
+                            HOME_CONTENTS_LIST = {this.props.home_contents_list}
+                            GET_CONTENTS_LIST = {this._getHomeContentsList}
+                        />
+                        {/* <!-- End page content --> */}
+                    </PullRefresh>
                 <Footer />
             </div>
         );
